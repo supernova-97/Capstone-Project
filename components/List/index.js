@@ -6,6 +6,7 @@ import {
   StyledCheckBox,
   ListWrapper,
 } from "./List.styled";
+import Link from "next/link";
 
 function List({ toDos, onDeleteToDo }) {
   return (
@@ -26,6 +27,7 @@ function List({ toDos, onDeleteToDo }) {
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
         </StyledConditionalText>
       </ListWrapper>
+      <Link href="/">Dashboard</Link>
     </>
   );
 }

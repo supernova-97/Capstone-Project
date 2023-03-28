@@ -3,7 +3,7 @@ import Link from "next/link";
 function Dashboard() {
   return (
     <>
-      <button>To-do-board</button>
+      <Link href="/to-do">To-do-board</Link>
       <Link href="/new-trip">New Trip</Link>
     </>
   );
