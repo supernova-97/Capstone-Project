@@ -16,7 +16,6 @@ export default function Home() {
     setToDos(newToDos);
   }
 
-  console.log("todos:", toDos);
   return (
     <main>
       <Heading>To-Do Board</Heading>
