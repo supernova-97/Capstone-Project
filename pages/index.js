@@ -3,6 +3,7 @@ import Form from "../components/Form";
 import List from "../components/List";
 import { useState } from "react";
 import { uid } from "uid";
+import Dashboard from "../components/Dashboard";
 
 export default function Home() {
   const [toDos, setToDos] = useState([]);
@@ -21,6 +22,7 @@ export default function Home() {
       <Heading>To-Do Board</Heading>
       <Form onAddToDo={handleAddToDo} />
       <List toDos={toDos} onDeleteToDo={handleDeleteToDo} />
+      <Dashboard />
     </main>
   );
 }
