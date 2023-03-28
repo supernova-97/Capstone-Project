@@ -1,4 +1,4 @@
-import NewTrip from "../../components/NewTrip/NewTrip";
+import NewTrip from "../../components/NewTrip";
 
 function NewTripPage() {
   return (
