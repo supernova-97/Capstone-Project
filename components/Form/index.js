@@ -11,8 +11,8 @@ function Form({ onAddToDo }) {
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="todo" />
-        To do:
+        <label htmlFor="todo">To do:</label>
+
         <StyledInput type="text" id="todo" name="name" required />
         <StyledAddButton type="submit">Add</StyledAddButton>
       </StyledForm>

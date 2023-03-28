@@ -14,7 +14,7 @@ function List({ toDos, onDeleteToDo }) {
         <ul>
           {toDos.map((toDo, index) => (
             <ListItem key={toDo.id}>
-              <StyledCheckBox type="checkbox"></StyledCheckBox>
+              <StyledCheckBox type="checkbox" />
               <StyledText>{toDo.name}</StyledText>
               <StyledDeleteButton onClick={() => onDeleteToDo?.(index)}>
                 x
