@@ -52,3 +52,11 @@ export const StyledConditionalP = styled.p`
   text-align: center;
   margin: 40px;
 `;
+
+export const ListWrapper = styled.section`
+  margin: 30px 10px 10px 10px;
+  width: auto;
+  height: 400px;
+  border: 2px solid black;
+  overflow: scroll;
+`;
