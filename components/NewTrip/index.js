@@ -1,8 +1,18 @@
+import { useRouter } from "next/router";
+
 function NewTrip() {
+  const router = useRouter();
+  function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    console.log(data);
+    router.push("/");
+  }
   return (
     <>
       <h1>Plan your next Trip</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name your trip:</label>
         <input type="text" id="name" name="name" required />
         <label htmlFor="where">Where are we going?</label>
@@ -13,6 +23,7 @@ function NewTrip() {
         <input type="text" id="who" name="who" required />
         <label htmlFor="what">What do we need?</label>
         <input type="text" id="what" name="what" required />
+        <button type="submit">Create new Trip</button>
       </form>
     </>
   );
