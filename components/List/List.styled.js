@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ListContainer = styled.li`
+export const ListItem = styled.li`
   display: flex;
   align-items: center;
   border-bottom: 2px solid black;
@@ -19,8 +19,6 @@ export const StyledCheckBox = styled.input`
   box-shadow: -1px 1px black;
   :checked {
     background-color: grey;
-  }
-  :after {
   }
 `;
 
@@ -44,11 +42,11 @@ export const StyledDeleteButton = styled.button`
   }
 `;
 
-export const StyledP = styled.p`
+export const StyledText = styled.p`
   margin: 0 15px 0 0;
 `;
 
-export const StyledConditionalP = styled.p`
+export const StyledConditionalText = styled.p`
   text-align: center;
   margin: 40px;
 `;

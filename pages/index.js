@@ -1,6 +1,6 @@
 import Heading from "../components/Heading";
-import Form from "../components/Form/Form";
-import List from "../components/List/List";
+import Form from "../components/Form";
+import List from "../components/List";
 import { useState } from "react";
 import { uid } from "uid";
 
@@ -12,7 +12,6 @@ export default function Home() {
   }
 
   function handleDeleteToDo(index) {
-    console.log("index", index);
     const newToDos = toDos.filter((_, i) => i !== index);
     setToDos(newToDos);
   }
