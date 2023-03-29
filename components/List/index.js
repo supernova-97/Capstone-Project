@@ -1,15 +1,34 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { useState } from "react";
 
 function List({ toDos, onDeleteToDo }) {
+  const [isCheckedArray, setIsCheckedArray] = useState(
+    new Array(toDos.length).fill(false)
+  );
+  console.log(isCheckedArray);
+  function toggleIsChecked(index) {
+    const newIsCheckedArray = [...isCheckedArray];
+    newIsCheckedArray[index] = !newIsCheckedArray[index];
+    setIsCheckedArray(newIsCheckedArray);
+  }
+
   return (
     <>
       <ListWrapper>
         <ul>
           {toDos.map((toDo, index) => (
             <ListItem key={toDo.id}>
-              <StyledCheckBox type="checkbox" />
-              <StyledText>{toDo.name}</StyledText>
+              <StyledCheckBox
+                type="checkbox"
+                checked={isCheckedArray[index]}
+                onClick={() => toggleIsChecked(index)}
+              />
+
+              <StyledText isChecked={isCheckedArray[index]}>
+                {toDo.name}
+              </StyledText>
+
               <StyledDeleteButton onClick={() => onDeleteToDo(index)}>
                 x
               </StyledDeleteButton>
@@ -73,7 +92,14 @@ const StyledDeleteButton = styled.button`
 
 const StyledText = styled.p`
   margin: 0 15px 0 0;
+  text-decoration: ${(props) => (props.isChecked ? "line-through" : "none")};
 `;
+
+// const StyledTextChecked = styled.p`
+//   margin: 0 15px 0 0;
+//   text-decoration: line-through;
+//   opacity: 0.4;
+// `;
 
 const StyledConditionalText = styled.p`
   text-align: center;
