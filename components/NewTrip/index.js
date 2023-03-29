@@ -38,23 +38,52 @@ function NewTrip() {
 
   return (
     <>
-      <h1>Plan your next Trip</h1>
-      <StyledForm onSubmit={handleSubmit}>
-        {step ? (
-          <FormStepOne nextStep={nextStep} handleChange={handleChange} />
-        ) : (
-          <FormStepTwo nextStep={nextStep} handleChange={handleChange} />
-        )}
-      </StyledForm>
-      <Link href="/">Dashboard</Link>
+      <FormWrapper>
+        <StyledHeading>Plan your next Trip</StyledHeading>
+
+        <StyledForm onSubmit={handleSubmit}>
+          {step ? (
+            <FormStepOne nextStep={nextStep} handleChange={handleChange} />
+          ) : (
+            <FormStepTwo nextStep={nextStep} handleChange={handleChange} />
+          )}
+        </StyledForm>
+      </FormWrapper>
+      <DashboardLink href="/">Dashboard</DashboardLink>
     </>
   );
 }
 
 export default NewTrip;
 
+const StyledHeading = styled.h1`
+  background-color: #d9ff80;
+  padding: 10px;
+  box-shadow: -3px 3px black;
+`;
+
+const FormWrapper = styled.div`
+  display: flex;
+  margin: 30px;
+  flex-direction: column;
+  align-items: center;
+`;
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
+  border: 2px solid black;
+  padding: 20px;
+  box-shadow: -3px 3px black;
+`;
+
+const DashboardLink = styled(Link)`
+  background-color: #d9ff80;
+  border: 2px solid black;
+  box-shadow: -2px 2px black;
+  margin: 25px 10px 0 10px;
+  padding: 5px;
+  width: 40%;
+  text-decoration: none;
+  color: black;
 `;

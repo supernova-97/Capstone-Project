@@ -1,8 +1,10 @@
+import styled from "styled-components";
+
 function FormStepOne({ nextStep, handleChange }) {
   return (
     <>
       <label htmlFor="name">Name your trip:</label>
-      <input
+      <StyledInput
         type="text"
         id="name"
         name="name"
@@ -10,7 +12,7 @@ function FormStepOne({ nextStep, handleChange }) {
         onChange={handleChange}
       />
       <label htmlFor="where">Where are we going?</label>
-      <input
+      <StyledInput
         type="text"
         id="where"
         name="where"
@@ -18,16 +20,37 @@ function FormStepOne({ nextStep, handleChange }) {
         onChange={handleChange}
       />
       <label htmlFor="when">When are we going?</label>
-      <input
+      <StyledInput
         type="date"
         id="when"
         name="when"
         required
         onChange={handleChange}
       />
-      <button onClick={nextStep}>Next Step</button>
+      <NextButton onClick={nextStep}>Next Step</NextButton>
     </>
   );
 }
 
 export default FormStepOne;
+
+const StyledInput = styled.input`
+  background-color: #d9ff80;
+  height: 1.7rem;
+  margin: 0.7rem;
+  box-shadow: -2px 3px black;
+  border: 1px solid black;
+  :focus {
+    outline: none;
+    border: 2px solid #4af52c;
+  }
+`;
+
+const NextButton = styled.button`
+  background-color: #d9ff80;
+  border: 2px solid black;
+  box-shadow: -2px 2px black;
+  margin: 25px 0 0 10px;
+  padding: 5px;
+  width: 40%;
+`;

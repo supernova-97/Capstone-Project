@@ -20,7 +20,7 @@ function List({ toDos, onDeleteToDo }) {
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
         </StyledConditionalText>
       </ListWrapper>
-      <Link href="/">Dashboard</Link>
+      <DashboardLink href="/">Dashboard</DashboardLink>
     </>
   );
 }
@@ -86,4 +86,15 @@ const ListWrapper = styled.section`
   height: 400px;
   border: 2px solid black;
   overflow: scroll;
+`;
+
+const DashboardLink = styled(Link)`
+  background-color: #d9ff80;
+  border: 2px solid black;
+  box-shadow: -2px 2px black;
+  margin: 25px 10px 0 10px;
+  padding: 5px;
+  width: 40%;
+  text-decoration: none;
+  color: black;
 `;
