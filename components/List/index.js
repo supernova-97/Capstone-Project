@@ -122,4 +122,8 @@ const DashboardLink = styled(Link)`
   width: 40%;
   text-decoration: none;
   color: black;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
 `;

@@ -46,18 +46,25 @@ const ToDoBoardLink = styled(Link)`
   box-shadow: -3px 3px black;
   text-align: center;
   text-decoration: none;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
 `;
 
 const NewTripLink = styled(Link)`
   background-color: #d9ff80;
-  color: black;
   margin: 30px 0 0 0;
-  padding: 14px;
-  height: 50px;
-  width: 50px;
+  padding: 5px;
+  height: 35px;
+  width: 35px;
   border: 2px solid #000;
   border-radius: 50%;
   box-shadow: -3px 3px black;
   text-align: center;
   text-decoration: none;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
 `;

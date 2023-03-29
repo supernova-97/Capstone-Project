@@ -69,7 +69,7 @@ const StyledInput = styled.input`
   border: 1px solid black;
   :focus {
     outline: none;
-    border: 2px solid #4af52c;
+    border: 2px solid #db9d47;
   }
 `;
 
@@ -80,6 +80,10 @@ const Button = styled.button`
   margin: 25px 10px 0 10px;
   padding: 5px;
   width: 40%;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
 `;
 
 const AddButton = styled.button`
@@ -89,6 +93,10 @@ const AddButton = styled.button`
   margin: 5px 0 0 10px;
   padding: 5px;
   width: 40%;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
 `;
 
 const ButtonMenu = styled.div`

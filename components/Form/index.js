@@ -41,7 +41,7 @@ const StyledInput = styled.input`
   border: 1px solid black;
   :focus {
     outline: none;
-    border: 2px solid #4af52c;
+    border: 2px solid #db9d47;
   }
 `;
 
@@ -53,7 +53,7 @@ const StyledAddButton = styled.button`
   padding: 2px 15px;
   transition: 0.3s;
   :hover {
-    background-color: #72b359;
+    background-color: #db9d47;
     box-shadow: -3.5px 4.5px black;
   }
   :active {
