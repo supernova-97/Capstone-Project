@@ -100,12 +100,6 @@ const StyledText = styled.p`
     `}
 `;
 
-// const StyledTextChecked = styled.p`
-//   margin: 0 15px 0 0;
-//   text-decoration: line-through;
-//   opacity: 0.4;
-// `;
-
 const StyledConditionalText = styled.p`
   text-align: center;
   margin: 40px;
