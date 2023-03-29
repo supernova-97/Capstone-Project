@@ -41,11 +41,14 @@ function FormStepTwo({ nextStep, handleChange }) {
       <AddButton type="button" onClick={handleClick}>
         Add
       </AddButton>
-      <ul>
+      <StyledList>
         {formToDo.map((todo) => (
-          <li key={todo.id}>{todo.what}</li>
+          <>
+            <StyledCheckBox type="checkbox" />
+            <ListItem key={todo.id}>{todo.what}</ListItem>
+          </>
         ))}
-      </ul>
+      </StyledList>
       <ButtonMenu>
         <Button onClick={nextStep}>Back</Button>
         <Button type="submit">Create new Trip</Button>
@@ -89,4 +92,31 @@ const AddButton = styled.button`
 const ButtonMenu = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid black;
+  width: fit-content;
+  padding: 10px;
+  margin: 0px;
+`;
+
+const StyledCheckBox = styled.input`
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  margin: 10px;
+  background-color: #d9ff80;
+  border: 1px solid black;
+  box-shadow: -1px 1px black;
+  :checked {
+    background-color: grey;
+  }
+`;
+
+const StyledList = styled.ul`
+  display: flex;
+  flex-direction: row;
 `;
