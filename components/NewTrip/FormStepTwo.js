@@ -44,8 +44,10 @@ function FormStepTwo({ nextStep, handleChange }) {
       <StyledList>
         {formToDo.map((todo) => (
           <>
-            <StyledCheckBox type="checkbox" />
-            <ListItem key={todo.id}>{todo.what}</ListItem>
+            <ListItem key={todo.id}>
+              <StyledCheckBox type="checkbox" />
+              {todo.what}
+            </ListItem>
           </>
         ))}
       </StyledList>
@@ -118,5 +120,5 @@ const StyledCheckBox = styled.input`
 
 const StyledList = styled.ul`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
