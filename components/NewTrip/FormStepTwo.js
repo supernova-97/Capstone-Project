@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { uid } from "uid";
+import { useRef } from "react";
 
 function FormStepTwo({ nextStep, handleChange }) {
   const [formToDo, setFormToDo] = useState([]);
   const [newToDo, setNewToDo] = useState([]);
+  const whatInputRef = useRef(null);
 
   function saveToDos(e) {
     setNewToDo({
@@ -14,6 +16,7 @@ function FormStepTwo({ nextStep, handleChange }) {
   console.log("newtodo:", newToDo);
   function handleClick() {
     setFormToDo([...formToDo, { id: uid(), ...newToDo }]);
+    whatInputRef.current.value = "";
   }
 
   console.log("formToDo:", formToDo);
@@ -22,7 +25,14 @@ function FormStepTwo({ nextStep, handleChange }) {
       <label htmlFor="who">Who is coming?</label>
       <input type="text" id="who" name="who" required onChange={handleChange} />
       <label htmlFor="what">What do we need?</label>
-      <input type="text" id="what" name="what" onChange={saveToDos} required />
+      <input
+        type="text"
+        id="what"
+        name="what"
+        onChange={saveToDos}
+        required
+        ref={whatInputRef}
+      />
       <button type="button" onClick={handleClick}>
         Add
       </button>
