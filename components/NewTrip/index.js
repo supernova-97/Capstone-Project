@@ -18,7 +18,6 @@ function NewTrip() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("data", data);
 
     if (data.name === "" || data.where === "" || data.when === 0) {
       return alert("Missing info!");
@@ -36,8 +35,7 @@ function NewTrip() {
   function nextStep() {
     setStep(!step);
   }
-  console.log("data", data);
-  console.log("step", step);
+
   return (
     <>
       <h1>Plan your next Trip</h1>

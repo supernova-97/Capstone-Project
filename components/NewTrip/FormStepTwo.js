@@ -13,13 +13,12 @@ function FormStepTwo({ nextStep, handleChange }) {
       [e.target.name]: e.target.value,
     });
   }
-  console.log("newtodo:", newToDo);
+
   function handleClick() {
     setFormToDo([...formToDo, { id: uid(), ...newToDo }]);
     whatInputRef.current.value = "";
   }
 
-  console.log("formToDo:", formToDo);
   return (
     <>
       <label htmlFor="who">Who is coming?</label>
@@ -30,7 +29,6 @@ function FormStepTwo({ nextStep, handleChange }) {
         id="what"
         name="what"
         onChange={saveToDos}
-        required
         ref={whatInputRef}
       />
       <button type="button" onClick={handleClick}>
