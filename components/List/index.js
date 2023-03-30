@@ -1,15 +1,33 @@
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { useState } from "react";
 
 function List({ toDos, onDeleteToDo }) {
+  const [isCheckedArray, setIsCheckedArray] = useState(
+    new Array(toDos.length).fill(false)
+  );
+
+  function toggleIsChecked(index) {
+    const newIsCheckedArray = [...isCheckedArray];
+    newIsCheckedArray[index] = !newIsCheckedArray[index];
+    setIsCheckedArray(newIsCheckedArray);
+  }
+
   return (
     <>
       <ListWrapper>
         <ul>
           {toDos.map((toDo, index) => (
             <ListItem key={toDo.id}>
-              <StyledCheckBox type="checkbox" />
-              <StyledText>{toDo.name}</StyledText>
+              <StyledCheckBox
+                type="checkbox"
+                onClick={() => toggleIsChecked(index)}
+              />
+
+              <StyledText isChecked={isCheckedArray[index]}>
+                {toDo.name}
+              </StyledText>
+
               <StyledDeleteButton onClick={() => onDeleteToDo(index)}>
                 x
               </StyledDeleteButton>
@@ -73,6 +91,13 @@ const StyledDeleteButton = styled.button`
 
 const StyledText = styled.p`
   margin: 0 15px 0 0;
+
+  ${(props) =>
+    props.isChecked &&
+    css`
+      text-decoration: line-through;
+      opacity: 0.3;
+    `}
 `;
 
 const StyledConditionalText = styled.p`
@@ -97,4 +122,8 @@ const DashboardLink = styled(Link)`
   width: 40%;
   text-decoration: none;
   color: black;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
 `;
