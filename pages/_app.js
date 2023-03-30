@@ -10,8 +10,8 @@ export default function App({ Component, pageProps }) {
     setToDos([...toDos, { id: uid(), ...newToDo }]);
   }
 
-  function handleDeleteToDo(index) {
-    const newToDos = toDos.filter((_, i) => i !== index);
+  function handleDeleteToDo(id) {
+    const newToDos = toDos.filter((toDo) => toDo.id !== id);
     setToDos(newToDos);
   }
   return (

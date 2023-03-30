@@ -3,32 +3,31 @@ import styled, { css } from "styled-components";
 import { useState } from "react";
 
 function List({ toDos, onDeleteToDo }) {
-  const [isCheckedArray, setIsCheckedArray] = useState(
-    new Array(toDos.length).fill(false)
-  );
+  const [isCheckedObject, setIsCheckedObject] = useState({});
 
-  function toggleIsChecked(index) {
-    const newIsCheckedArray = [...isCheckedArray];
-    newIsCheckedArray[index] = !newIsCheckedArray[index];
-    setIsCheckedArray(newIsCheckedArray);
+  function toggleIsChecked(id) {
+    setIsCheckedObject((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
   }
 
   return (
     <>
       <ListWrapper>
         <ul>
-          {toDos.map((toDo, index) => (
+          {toDos.map((toDo) => (
             <ListItem key={toDo.id}>
               <StyledCheckBox
                 type="checkbox"
-                onClick={() => toggleIsChecked(index)}
+                onClick={() => toggleIsChecked(toDo.id)}
               />
 
-              <StyledText isChecked={isCheckedArray[index]}>
+              <StyledText isChecked={isCheckedObject[toDo.id]}>
                 {toDo.name}
               </StyledText>
 
-              <StyledDeleteButton onClick={() => onDeleteToDo(index)}>
+              <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
                 x
               </StyledDeleteButton>
             </ListItem>
