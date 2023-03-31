@@ -8,7 +8,7 @@ import FormStepTwo from "./FormStepTwo";
 
 function NewTrip({ onAddToDo }) {
   const [formToDos, setFormToDos] = useState([]);
-  const [toDoInput, setToDoInput] = useState([]);
+  let toDoInput = { todo: "" };
   const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
   const [data, setData] = useState({
@@ -40,10 +40,7 @@ function NewTrip({ onAddToDo }) {
   }
 
   function handleToDoInput(e) {
-    setToDoInput({
-      ...toDoInput,
-      [e.target.name]: e.target.value,
-    });
+    toDoInput.todo = e.target.value;
   }
 
   function handleAddToDo() {
