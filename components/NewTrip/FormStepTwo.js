@@ -3,10 +3,10 @@ import styled from "styled-components";
 function FormStepTwo({
   nextStep,
   handleChange,
-  onAddClick,
+  onAddToDo,
   formToDos,
-  onSaveToDos,
-  whatInputRef,
+  handleToDoInput,
+  toDoInputRef,
 }) {
   return (
     <>
@@ -23,10 +23,10 @@ function FormStepTwo({
         type="text"
         id="what"
         name="todo"
-        onChange={onSaveToDos}
-        ref={whatInputRef}
+        onChange={handleToDoInput}
+        ref={toDoInputRef}
       />
-      <AddButton type="button" onClick={onAddClick}>
+      <AddButton type="button" onClick={onAddToDo}>
         Add
       </AddButton>
       <StyledList>

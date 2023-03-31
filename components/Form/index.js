@@ -3,11 +3,10 @@ import styled from "styled-components";
 function Form({ onAddToDo }) {
   function handleSubmit(event) {
     event.preventDefault();
-
     onAddToDo(event.target.todo.value);
-    console.log(event.target.todo.value);
     event.target.reset();
   }
+
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>

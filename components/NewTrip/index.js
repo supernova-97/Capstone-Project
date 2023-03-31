@@ -7,13 +7,10 @@ import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
 
 function NewTrip({ onAddToDo }) {
-  //"what" input field
-  const [newTripToDos, setNewTripToDos] = useState([]);
   const [formToDos, setFormToDos] = useState([]);
-  const whatInputRef = useRef(null);
-  //
+  const [toDoInput, setToDoInput] = useState([]);
+  const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
-  //input fields
   const [data, setData] = useState({
     name: "",
     where: "",
@@ -36,29 +33,24 @@ function NewTrip({ onAddToDo }) {
     }
 
     formToDos.map((todo) => {
-      console.log("formToDos", formToDos);
-      console.log("todo.todo", todo.todo);
       onAddToDo(todo.todo);
     });
 
     router.push("/");
   }
 
-  //functions for the "what" input field
-
-  function handleSaveToDos(e) {
-    setNewTripToDos({
-      ...newTripToDos,
+  function handleToDoInput(e) {
+    setToDoInput({
+      ...toDoInput,
       [e.target.name]: e.target.value,
     });
   }
 
-  function handleAddClick() {
-    setFormToDos([...formToDos, { ...newTripToDos }]);
-    whatInputRef.current.value = "";
+  function handleAddToDo() {
+    setFormToDos([...formToDos, { ...toDoInput }]);
+    toDoInputRef.current.value = "";
   }
 
-  //functions for other inputs. data saves all the inputs except "what"
   function handleChange(e) {
     setData({
       ...data,
@@ -82,10 +74,10 @@ function NewTrip({ onAddToDo }) {
             <FormStepTwo
               nextStep={nextStep}
               handleChange={handleChange}
-              onAddClick={handleAddClick}
+              onAddToDo={handleAddToDo}
               formToDos={formToDos}
-              onSaveToDos={handleSaveToDos}
-              whatInputRef={whatInputRef}
+              handleToDoInput={handleToDoInput}
+              toDoInputRef={toDoInputRef}
             />
           )}
         </StyledForm>
