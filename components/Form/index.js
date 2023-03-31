@@ -3,9 +3,9 @@ import styled from "styled-components";
 function Form({ onAddToDo }) {
   function handleSubmit(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    onAddToDo(data);
+
+    onAddToDo(event.target.todo.value);
+    console.log(event.target.todo.value);
     event.target.reset();
   }
   return (
@@ -13,7 +13,7 @@ function Form({ onAddToDo }) {
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="todo">To do:</label>
 
-        <StyledInput type="text" id="todo" name="name" required />
+        <StyledInput type="text" id="todo" name="todo" required />
         <StyledAddButton type="submit">Add</StyledAddButton>
       </StyledForm>
     </>

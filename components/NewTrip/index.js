@@ -1,12 +1,19 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
 
-function NewTrip() {
+function NewTrip({ onAddToDo }) {
+  //"what" input field
+  const [newTripToDos, setNewTripToDos] = useState([]);
+  const [formToDos, setFormToDos] = useState([]);
+  const whatInputRef = useRef(null);
+  //
   const [step, setStep] = useState(true);
+  //input fields
   const [data, setData] = useState({
     name: "",
     where: "",
@@ -19,12 +26,39 @@ function NewTrip() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (data.name === "" || data.where === "" || data.when === 0) {
+    if (
+      data.name === "" ||
+      data.where === "" ||
+      data.when === 0 ||
+      data.who === ""
+    ) {
       return alert("Missing info!");
     }
+
+    formToDos.map((todo) => {
+      console.log("formToDos", formToDos);
+      console.log("todo.todo", todo.todo);
+      onAddToDo(todo.todo);
+    });
+
     router.push("/");
   }
 
+  //functions for the "what" input field
+
+  function handleSaveToDos(e) {
+    setNewTripToDos({
+      ...newTripToDos,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleAddClick() {
+    setFormToDos([...formToDos, { ...newTripToDos }]);
+    whatInputRef.current.value = "";
+  }
+
+  //functions for other inputs. data saves all the inputs except "what"
   function handleChange(e) {
     setData({
       ...data,
@@ -45,7 +79,14 @@ function NewTrip() {
           {step ? (
             <FormStepOne nextStep={nextStep} handleChange={handleChange} />
           ) : (
-            <FormStepTwo nextStep={nextStep} handleChange={handleChange} />
+            <FormStepTwo
+              nextStep={nextStep}
+              handleChange={handleChange}
+              onAddClick={handleAddClick}
+              formToDos={formToDos}
+              onSaveToDos={handleSaveToDos}
+              whatInputRef={whatInputRef}
+            />
           )}
         </StyledForm>
       </FormWrapper>
