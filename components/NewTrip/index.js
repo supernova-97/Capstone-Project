@@ -11,7 +11,7 @@ function NewTrip({ onAddToDo }) {
   let toDoInput = { todo: "" };
   const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
-  const [data, setData] = useState({
+  const [tripData, setTripData] = useState({
     name: "",
     where: "",
     when: 0,
@@ -24,10 +24,10 @@ function NewTrip({ onAddToDo }) {
     e.preventDefault();
 
     if (
-      data.name === "" ||
-      data.where === "" ||
-      data.when === 0 ||
-      data.who === ""
+      tripData.name === "" ||
+      tripData.where === "" ||
+      tripData.when === 0 ||
+      tripData.who === ""
     ) {
       return alert("Missing info!");
     }
@@ -36,7 +36,17 @@ function NewTrip({ onAddToDo }) {
       onAddToDo(todo.todo);
     });
 
+    setTripData({
+      ...tripData,
+      who: separateFriends(e.target.who.value),
+    });
+
     router.push("/");
+  }
+
+  function separateFriends(who) {
+    let separatedArray = who.split(", ");
+    return separatedArray;
   }
 
   function handleToDoInput(e) {
@@ -49,8 +59,8 @@ function NewTrip({ onAddToDo }) {
   }
 
   function handleChange(e) {
-    setData({
-      ...data,
+    setTripData({
+      ...tripData,
       [e.target.name]: e.target.value,
     });
   }
