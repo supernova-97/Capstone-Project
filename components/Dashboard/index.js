@@ -29,7 +29,8 @@ const MainHeader = styled.h1`
   margin: 20px auto;
   width: 40%;
   text-align: center;
-  background-color: #d9ff80;
+  /* background-color: #d9ff80; */
+  background-image: linear-gradient(to bottom right, #96fbc4 0%, #d9ff80 80%);
   box-shadow: -5px 5px black;
   height: 50px;
   padding: 6px;
@@ -54,6 +55,7 @@ const ToDoBoardLink = styled(Link)`
 
 const NewTripLink = styled(Link)`
   background-color: #d9ff80;
+  color: black;
   margin: 30px 0 0 0;
   padding: 5px;
   height: 35px;

@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
 
   function handleAddToDo(item) {
-    setToDos((toDos) => [...toDos, { id: uid(), todo: item }]);
+    setToDos((toDos) => [...toDos, { id: uid(), todo: item, section: "" }]);
   }
 
   function handleDeleteToDo(id) {
@@ -16,10 +16,10 @@ export default function App({ Component, pageProps }) {
   }
 
   const [tripData, setTripData] = useState({
-    name: "",
-    where: "",
-    when: 0,
-    who: "",
+    name: "Camping",
+    where: "Denmark",
+    when: "2023-05-06",
+    who: ["Barkley", " Ariana", "Felix", "Fupsi"],
   });
 
   return (

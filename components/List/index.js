@@ -2,9 +2,9 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { useState } from "react";
 
-function List({ toDos, onDeleteToDo }) {
+function List({ toDos, onDeleteToDo, tripData }) {
   const [isCheckedArray, setIsCheckedArray] = useState({});
-
+  const friends = tripData.who;
   function toggleIsChecked(id) {
     setIsCheckedArray((prevState) => ({
       ...prevState,
@@ -33,10 +33,17 @@ function List({ toDos, onDeleteToDo }) {
             </ListItem>
           ))}
         </ul>
+        {friends.map((friend, index) => (
+          <section key={index}>
+            <h2>{friend}</h2>
+          </section>
+        ))}
+
         <StyledConditionalText>
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
         </StyledConditionalText>
       </ListWrapper>
+
       <DashboardLink href="/">Dashboard</DashboardLink>
     </>
   );
