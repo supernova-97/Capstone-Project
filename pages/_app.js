@@ -6,8 +6,8 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
 
-  function handleAddToDo(newToDo) {
-    setToDos([...toDos, { id: uid(), ...newToDo }]);
+  function handleAddToDo(item) {
+    setToDos((toDos) => [...toDos, { id: uid(), todo: item }]);
   }
 
   function handleDeleteToDo(id) {

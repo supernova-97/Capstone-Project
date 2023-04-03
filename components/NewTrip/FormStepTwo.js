@@ -1,25 +1,13 @@
-import { useState } from "react";
-import { uid } from "uid";
-import { useRef } from "react";
 import styled from "styled-components";
 
-function FormStepTwo({ nextStep, handleChange }) {
-  const [formToDo, setFormToDo] = useState([]);
-  const [newToDo, setNewToDo] = useState([]);
-  const whatInputRef = useRef(null);
-
-  function saveToDos(e) {
-    setNewToDo({
-      ...newToDo,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  function handleClick() {
-    setFormToDo([...formToDo, { id: uid(), ...newToDo }]);
-    whatInputRef.current.value = "";
-  }
-
+function FormStepTwo({
+  nextStep,
+  handleChange,
+  onAddToDo,
+  formToDos,
+  handleToDoInput,
+  toDoInputRef,
+}) {
   return (
     <>
       <label htmlFor="who">Who is coming?</label>
@@ -34,21 +22,16 @@ function FormStepTwo({ nextStep, handleChange }) {
       <StyledInput
         type="text"
         id="what"
-        name="what"
-        onChange={saveToDos}
-        ref={whatInputRef}
+        name="todo"
+        onChange={handleToDoInput}
+        ref={toDoInputRef}
       />
-      <AddButton type="button" onClick={handleClick}>
+      <AddButton type="button" onClick={onAddToDo}>
         Add
       </AddButton>
       <StyledList>
-        {formToDo.map((todo) => (
-          <>
-            <ListItem key={todo.id}>
-              <StyledCheckBox type="checkbox" />
-              {todo.what}
-            </ListItem>
-          </>
+        {formToDos.map((todo, i) => (
+          <ListItem key={i}>{todo.todo}</ListItem>
         ))}
       </StyledList>
       <ButtonMenu>

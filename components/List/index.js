@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import { useState } from "react";
 
 function List({ toDos, onDeleteToDo }) {
-  const [isCheckedObject, setIsCheckedObject] = useState({});
+  const [isCheckedArray, setIsCheckedArray] = useState({});
 
   function toggleIsChecked(id) {
-    setIsCheckedObject((prevState) => ({
+    setIsCheckedArray((prevState) => ({
       ...prevState,
       [id]: !prevState[id],
     }));
@@ -23,8 +23,8 @@ function List({ toDos, onDeleteToDo }) {
                 onClick={() => toggleIsChecked(toDo.id)}
               />
 
-              <StyledText isChecked={isCheckedObject[toDo.id]}>
-                {toDo.name}
+              <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
+                {toDo.todo}
               </StyledText>
 
               <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
@@ -92,7 +92,7 @@ const StyledText = styled.p`
   margin: 0 15px 0 0;
 
   ${(props) =>
-    props.isChecked &&
+    props.isCheckedArray &&
     css`
       text-decoration: line-through;
       opacity: 0.3;

@@ -1,11 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
 
-function NewTrip() {
+function NewTrip({ onAddToDo }) {
+  const [formToDos, setFormToDos] = useState([]);
+  let toDoInput = { todo: "" };
+  const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
   const [data, setData] = useState({
     name: "",
@@ -19,10 +23,29 @@ function NewTrip() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (data.name === "" || data.where === "" || data.when === 0) {
+    if (
+      data.name === "" ||
+      data.where === "" ||
+      data.when === 0 ||
+      data.who === ""
+    ) {
       return alert("Missing info!");
     }
+
+    formToDos.map((todo) => {
+      onAddToDo(todo.todo);
+    });
+
     router.push("/");
+  }
+
+  function handleToDoInput(e) {
+    toDoInput.todo = e.target.value;
+  }
+
+  function handleAddToDo() {
+    setFormToDos([...formToDos, { ...toDoInput }]);
+    toDoInputRef.current.value = "";
   }
 
   function handleChange(e) {
@@ -45,7 +68,14 @@ function NewTrip() {
           {step ? (
             <FormStepOne nextStep={nextStep} handleChange={handleChange} />
           ) : (
-            <FormStepTwo nextStep={nextStep} handleChange={handleChange} />
+            <FormStepTwo
+              nextStep={nextStep}
+              handleChange={handleChange}
+              onAddToDo={handleAddToDo}
+              formToDos={formToDos}
+              handleToDoInput={handleToDoInput}
+              toDoInputRef={toDoInputRef}
+            />
           )}
         </StyledForm>
       </FormWrapper>
