@@ -1,9 +1,13 @@
 import NewTrip from "../../components/NewTrip";
 
-function NewTripPage({ onAddToDo }) {
+function NewTripPage({ onAddToDo, tripData, setTripData }) {
   return (
     <>
-      <NewTrip onAddToDo={onAddToDo} />
+      <NewTrip
+        onAddToDo={onAddToDo}
+        tripData={tripData}
+        setTripData={setTripData}
+      />
     </>
   );
 }

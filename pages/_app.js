@@ -14,6 +14,14 @@ export default function App({ Component, pageProps }) {
     const newToDos = toDos.filter((toDo) => toDo.id !== id);
     setToDos(newToDos);
   }
+
+  const [tripData, setTripData] = useState({
+    name: "",
+    where: "",
+    when: 0,
+    who: "",
+  });
+
   return (
     <>
       <GlobalStyle />
@@ -25,6 +33,8 @@ export default function App({ Component, pageProps }) {
         onAddToDo={handleAddToDo}
         onDeleteToDo={handleDeleteToDo}
         toDos={toDos}
+        tripData={tripData}
+        setTripData={setTripData}
       />
     </>
   );

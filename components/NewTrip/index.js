@@ -6,17 +6,11 @@ import styled from "styled-components";
 import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
 
-function NewTrip({ onAddToDo }) {
+function NewTrip({ onAddToDo, tripData, setTripData }) {
   const [formToDos, setFormToDos] = useState([]);
   let toDoInput = { todo: "" };
   const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
-  const [tripData, setTripData] = useState({
-    name: "",
-    where: "",
-    when: 0,
-    who: "",
-  });
 
   const router = useRouter();
 
