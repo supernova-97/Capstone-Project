@@ -33,15 +33,14 @@ function List({ toDos, onDeleteToDo, tripData }) {
             </ListItem>
           ))}
         </ul>
-        {friends.map((friend, index) => (
-          <section key={index}>
-            <h2>{friend}</h2>
-          </section>
-        ))}
-
         <StyledConditionalText>
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
         </StyledConditionalText>
+        {friends.map((friend, index) => (
+          <StyledSection key={index}>
+            <SectionHeading>{friend}</SectionHeading>
+          </StyledSection>
+        ))}
       </ListWrapper>
 
       <DashboardLink href="/">Dashboard</DashboardLink>
@@ -132,4 +131,14 @@ const DashboardLink = styled(Link)`
   :hover {
     background-color: #db9d47;
   }
+`;
+
+const StyledSection = styled.section`
+  margin: 0 20px;
+  display: flex;
+  border-top: 2px solid black;
+`;
+
+const SectionHeading = styled.h3`
+  color: #db9d47;
 `;

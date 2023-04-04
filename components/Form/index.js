@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 
 function Form({ onAddToDo, tripData }) {
-  const [value, setValue] = useState(tripData.who[0]);
+  const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -11,7 +11,7 @@ function Form({ onAddToDo, tripData }) {
   }
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setSelectedFriend(event.target.value);
   };
 
   const friends = tripData.who;
@@ -19,10 +19,9 @@ function Form({ onAddToDo, tripData }) {
     <>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="todo">To do:</label>
-
         <StyledInput type="text" id="todo" name="todo" required />
         <label>Choose a friend:</label>
-        <StyledSelect value={value} onChange={handleChange}>
+        <StyledSelect value={selectedFriend} onChange={handleChange}>
           {friends.map((friend, index) => (
             <option value={friend} key={index}>
               {friend}
