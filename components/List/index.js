@@ -42,6 +42,9 @@ function List({ toDos, onDeleteToDo, tripData }) {
             </ul>
           </StyledSection>
         ))}
+        <StyledConditionalText>
+          {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
+        </StyledConditionalText>
       </ListWrapper>
 
       <DashboardLink href="/">Dashboard</DashboardLink>
@@ -56,7 +59,6 @@ export default List;
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  border-bottom: 2px solid black;
   width: fit-content;
   padding: 10px;
   margin: 0px;
@@ -137,7 +139,7 @@ const DashboardLink = styled(Link)`
 const StyledSection = styled.section`
   margin: 0 20px;
   display: flex;
-  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 `;
 
 const SectionHeading = styled.h3`

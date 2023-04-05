@@ -77,7 +77,7 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
               handleChange={handleChange}
               onAddToDo={handleAddToDo}
               formToDos={formToDos}
-              handleToDoInput={handleToDoInput}
+              onToDoInput={handleToDoInput}
               toDoInputRef={toDoInputRef}
             />
           )}

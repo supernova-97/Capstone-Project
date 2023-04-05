@@ -5,7 +5,7 @@ function FormStepTwo({
   handleChange,
   onAddToDo,
   formToDos,
-  handleToDoInput,
+  onToDoInput,
   toDoInputRef,
 }) {
   return (
@@ -15,6 +15,7 @@ function FormStepTwo({
         type="text"
         id="who"
         name="who"
+        placeholder="e.g. Luke, Leia, Chewie, Han"
         required
         onChange={handleChange}
       />
@@ -23,7 +24,7 @@ function FormStepTwo({
         type="text"
         id="what"
         name="todo"
-        onChange={handleToDoInput}
+        onChange={onToDoInput}
         ref={toDoInputRef}
       />
       <AddButton type="button" onClick={onAddToDo}>
@@ -94,19 +95,6 @@ const ListItem = styled.li`
   width: fit-content;
   padding: 10px;
   margin: 0px;
-`;
-
-const StyledCheckBox = styled.input`
-  appearance: none;
-  height: 15px;
-  width: 15px;
-  margin: 10px;
-  background-color: #d9ff80;
-  border: 1px solid black;
-  box-shadow: -1px 1px black;
-  :checked {
-    background-color: grey;
-  }
 `;
 
 const StyledList = styled.ul`
