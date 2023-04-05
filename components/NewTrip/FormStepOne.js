@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function FormStepOne({ nextStep, handleChange }) {
+function FormStepOne({ nextStep, onFormInput }) {
   return (
     <>
       <label htmlFor="name">Name your trip:</label>
@@ -9,7 +9,7 @@ function FormStepOne({ nextStep, handleChange }) {
         id="name"
         name="name"
         required
-        onChange={handleChange}
+        onChange={onFormInput}
       />
       <label htmlFor="where">Where are we going?</label>
       <StyledInput
@@ -17,7 +17,7 @@ function FormStepOne({ nextStep, handleChange }) {
         id="where"
         name="where"
         required
-        onChange={handleChange}
+        onChange={onFormInput}
       />
       <label htmlFor="when">When are we going?</label>
       <StyledInput
@@ -25,7 +25,7 @@ function FormStepOne({ nextStep, handleChange }) {
         id="when"
         name="when"
         required
-        onChange={handleChange}
+        onChange={onFormInput}
       />
       <NextButton onClick={nextStep}>Next Step</NextButton>
     </>

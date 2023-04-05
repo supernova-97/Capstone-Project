@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 function FormStepTwo({
   nextStep,
-  handleChange,
+  onFormInput,
   onAddToDo,
   formToDos,
   onToDoInput,
@@ -17,7 +17,7 @@ function FormStepTwo({
         name="who"
         placeholder="e.g. Luke, Leia, Chewie, Han"
         required
-        onChange={handleChange}
+        onChange={onFormInput}
       />
       <label htmlFor="what">What do we need?</label>
       <StyledInput

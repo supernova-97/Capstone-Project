@@ -11,7 +11,7 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
   let toDoInput = { todo: "" };
   const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
-
+  console.log("tripDataWho:", tripData.who);
   const router = useRouter();
 
   function handleSubmit(e) {
@@ -32,14 +32,15 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
 
     setTripData({
       ...tripData,
-      who: separateFriends(e.target.who.value),
+      who: separateFriends(e.target.who.value, tripData.who),
     });
 
     router.push("/");
   }
 
   function separateFriends(who) {
-    let separatedArray = who.split(", ");
+    let separatedArray = ["Me", ...who.split(", ")];
+    console.log(separatedArray);
     return separatedArray;
   }
 
@@ -52,7 +53,7 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
     toDoInputRef.current.value = "";
   }
 
-  function handleChange(e) {
+  function handleFormInput(e) {
     setTripData({
       ...tripData,
       [e.target.name]: e.target.value,
@@ -70,11 +71,11 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
 
         <StyledForm onSubmit={handleSubmit}>
           {step ? (
-            <FormStepOne nextStep={nextStep} handleChange={handleChange} />
+            <FormStepOne nextStep={nextStep} onFormInput={handleFormInput} />
           ) : (
             <FormStepTwo
               nextStep={nextStep}
-              handleChange={handleChange}
+              onFormInput={handleFormInput}
               onAddToDo={handleAddToDo}
               formToDos={formToDos}
               onToDoInput={handleToDoInput}
