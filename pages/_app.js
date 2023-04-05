@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
       { id: uid(), todo: item, section: selectedFriend },
     ]);
   }
-  console.log("toDos in app:", toDos);
+
   function handleDeleteToDo(id) {
     const newToDos = toDos.filter((toDo) => toDo.id !== id);
     setToDos(newToDos);
