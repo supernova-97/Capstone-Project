@@ -5,22 +5,25 @@ import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
-
-  function handleAddToDo(item) {
-    setToDos((toDos) => [...toDos, { id: uid(), todo: item, section: "" }]);
-  }
-
-  function handleDeleteToDo(id) {
-    const newToDos = toDos.filter((toDo) => toDo.id !== id);
-    setToDos(newToDos);
-  }
-
   const [tripData, setTripData] = useState({
     name: "Camping",
     where: "Denmark",
     when: "2023-05-06",
     who: ["Barkley", " Ariana", "Felix", "Fupsi"],
   });
+  const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
+
+  function handleAddToDo(item) {
+    setToDos((toDos) => [
+      ...toDos,
+      { id: uid(), todo: item, section: selectedFriend },
+    ]);
+  }
+  console.log("toDos in app:", toDos);
+  function handleDeleteToDo(id) {
+    const newToDos = toDos.filter((toDo) => toDo.id !== id);
+    setToDos(newToDos);
+  }
 
   return (
     <>
@@ -35,6 +38,8 @@ export default function App({ Component, pageProps }) {
         toDos={toDos}
         tripData={tripData}
         setTripData={setTripData}
+        selectedFriend={selectedFriend}
+        setSelectedFriend={setSelectedFriend}
       />
     </>
   );

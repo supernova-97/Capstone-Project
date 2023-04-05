@@ -3,8 +3,15 @@ import Form from "../../components/Form";
 import List from "../../components/List";
 import { useState } from "react";
 
-function ToDoBoard({ onAddToDo, onDeleteToDo, toDos, tripData }) {
-  const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
+function ToDoBoard({
+  onAddToDo,
+  onDeleteToDo,
+  toDos,
+  tripData,
+  selectedFriend,
+  setSelectedFriend,
+}) {
+  // const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
   return (
     <>
       <Heading>To-Do Board</Heading>

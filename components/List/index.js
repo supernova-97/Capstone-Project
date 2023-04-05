@@ -20,7 +20,7 @@ function List({ toDos, onDeleteToDo, tripData, selectedFriend }) {
             <SectionHeading>{friend}</SectionHeading>
             <ul>
               {toDos.map((toDo) => {
-                if (friend === selectedFriend) {
+                if (friend === toDo.section) {
                   return (
                     <ListItem key={toDo.id}>
                       <StyledCheckBox
