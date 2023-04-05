@@ -42,33 +42,6 @@ function List({ toDos, onDeleteToDo, tripData, selectedFriend }) {
             </ul>
           </StyledSection>
         ))}
-        {/* <ul>
-          {friends.map((friend, index) => (
-            <StyledSection key={index}>
-              <SectionHeading>{friend}</SectionHeading>
-            </StyledSection>
-          ))}
-
-          {toDos.map((toDo) => (
-            <ListItem key={toDo.id}>
-              <StyledCheckBox
-                type="checkbox"
-                onClick={() => toggleIsChecked(toDo.id)}
-              />
-
-              <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
-                {toDo.todo}
-              </StyledText>
-
-              <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
-                x
-              </StyledDeleteButton>
-            </ListItem>
-          ))}
-        </ul>
-        <StyledConditionalText>
-          {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
-        </StyledConditionalText> */}
       </ListWrapper>
 
       <DashboardLink href="/">Dashboard</DashboardLink>
