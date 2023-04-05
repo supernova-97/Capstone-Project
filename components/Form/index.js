@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-function Form({ onAddToDo, tripData }) {
-  const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
+function Form({ onAddToDo, tripData, setSelectedFriend, selectedFriend }) {
+  // const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
 
   function handleSubmit(event) {
     event.preventDefault();
     onAddToDo(event.target.todo.value);
+    console.log("selectedFriend in handleSubmit:", selectedFriend);
     event.target.reset();
   }
 

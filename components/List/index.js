@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { useState } from "react";
 
-function List({ toDos, onDeleteToDo, tripData }) {
+function List({ toDos, onDeleteToDo, tripData, selectedFriend }) {
   const [isCheckedArray, setIsCheckedArray] = useState({});
   const friends = tripData.who;
   function toggleIsChecked(id) {
@@ -15,7 +15,40 @@ function List({ toDos, onDeleteToDo, tripData }) {
   return (
     <>
       <ListWrapper>
-        <ul>
+        {friends.map((friend) => (
+          <StyledSection key={friend}>
+            <SectionHeading>{friend}</SectionHeading>
+            <ul>
+              {toDos.map((toDo) => {
+                if (friend === selectedFriend) {
+                  return (
+                    <ListItem key={toDo.id}>
+                      <StyledCheckBox
+                        type="checkbox"
+                        onClick={() => toggleIsChecked(toDo.id)}
+                      />
+                      <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
+                        {toDo.todo}
+                      </StyledText>
+                      <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
+                        x
+                      </StyledDeleteButton>
+                    </ListItem>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </ul>
+          </StyledSection>
+        ))}
+        {/* <ul>
+          {friends.map((friend, index) => (
+            <StyledSection key={index}>
+              <SectionHeading>{friend}</SectionHeading>
+            </StyledSection>
+          ))}
+
           {toDos.map((toDo) => (
             <ListItem key={toDo.id}>
               <StyledCheckBox
@@ -35,12 +68,7 @@ function List({ toDos, onDeleteToDo, tripData }) {
         </ul>
         <StyledConditionalText>
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
-        </StyledConditionalText>
-        {friends.map((friend, index) => (
-          <StyledSection key={index}>
-            <SectionHeading>{friend}</SectionHeading>
-          </StyledSection>
-        ))}
+        </StyledConditionalText> */}
       </ListWrapper>
 
       <DashboardLink href="/">Dashboard</DashboardLink>
