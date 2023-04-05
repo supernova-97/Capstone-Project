@@ -11,7 +11,8 @@ export default function App({ Component, pageProps }) {
     when: "2023-05-06",
     who: "",
   });
-  const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
+  const [selectedFriend, setSelectedFriend] = useState("Me");
+  console.log("selectedFriend:", selectedFriend);
 
   function handleAddToDo(item) {
     setToDos((toDos) => [
