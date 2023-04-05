@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { useState } from "react";
 
-function List({ toDos, onDeleteToDo, tripData, selectedFriend }) {
+function List({ toDos, onDeleteToDo, tripData }) {
   const [isCheckedArray, setIsCheckedArray] = useState({});
   const friends = tripData.who;
   function toggleIsChecked(id) {

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState } from "react";
 
 function Form({ onAddToDo, tripData, setSelectedFriend, selectedFriend }) {
   function handleSubmit(event) {
