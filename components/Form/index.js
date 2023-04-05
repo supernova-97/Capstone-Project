@@ -7,7 +7,6 @@ function Form({ onAddToDo, tripData, setSelectedFriend, selectedFriend }) {
   function handleSubmit(event) {
     event.preventDefault();
     onAddToDo(event.target.todo.value);
-    console.log("selectedFriend in handleSubmit:", selectedFriend);
     event.target.reset();
   }
 
