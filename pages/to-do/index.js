@@ -11,7 +11,6 @@ function ToDoBoard({
   selectedFriend,
   setSelectedFriend,
 }) {
-  // const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
   return (
     <>
       <Heading>To-Do Board</Heading>
