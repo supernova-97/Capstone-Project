@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { useState } from "react";
 
 function Form({ onAddToDo, tripData, setSelectedFriend, selectedFriend }) {
-  // const [selectedFriend, setSelectedFriend] = useState(tripData.who[0]);
-
   function handleSubmit(event) {
     event.preventDefault();
     onAddToDo(event.target.todo.value);
