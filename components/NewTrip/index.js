@@ -11,7 +11,7 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
   let toDoInput = { todo: "" };
   const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
-  console.log("tripDataWho:", tripData.who);
+
   const router = useRouter();
 
   function handleSubmit(e) {
@@ -40,7 +40,7 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
 
   function separateFriends(who) {
     let separatedArray = ["Me", ...who.split(", ")];
-    console.log(separatedArray);
+
     return separatedArray;
   }
 

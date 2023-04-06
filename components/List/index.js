@@ -15,8 +15,8 @@ function List({ toDos, onDeleteToDo, tripData }) {
   return (
     <>
       <ListWrapper>
-        {friends.map((friend) => (
-          <StyledSection key={friend}>
+        {friends.map((friend, index) => (
+          <StyledSection key={index}>
             <SectionHeading>{friend}</SectionHeading>
             <ul>
               {toDos.map((toDo) => {

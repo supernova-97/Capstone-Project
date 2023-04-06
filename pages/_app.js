@@ -6,13 +6,12 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
   const [tripData, setTripData] = useState({
-    name: "Camping",
-    where: "Denmark",
-    when: "2023-05-06",
-    who: ["Me"],
+    name: "",
+    where: "",
+    when: "",
+    who: [],
   });
   const [selectedFriend, setSelectedFriend] = useState("Me");
-  console.log("selectedFriend:", selectedFriend);
 
   function handleAddToDo(item) {
     setToDos((toDos) => [
