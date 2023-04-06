@@ -61,7 +61,15 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
   }
 
   function nextStep() {
-    setStep(!step);
+    if (tripData.name === "") {
+      return alert("Missing trip name!");
+    } else if (tripData.where === "") {
+      return alert("Missing destination!");
+    } else if (tripData.when === "") {
+      return alert("Missing date!");
+    } else {
+      setStep(!step);
+    }
   }
 
   return (
@@ -84,7 +92,6 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
           )}
         </StyledForm>
       </FormWrapper>
-      <DashboardLink href="/">Dashboard</DashboardLink>
     </>
   );
 }
@@ -110,19 +117,4 @@ const StyledForm = styled.form`
   border: 2px solid black;
   padding: 20px;
   box-shadow: -3px 3px black;
-`;
-
-const DashboardLink = styled(Link)`
-  background-color: #d9ff80;
-  border: 2px solid black;
-  box-shadow: -2px 2px black;
-  margin: 25px 10px 0 10px;
-  padding: 5px;
-  width: 40%;
-  text-decoration: none;
-  color: black;
-  transition: 0.2s ease-out;
-  :hover {
-    background-color: #db9d47;
-  }
 `;

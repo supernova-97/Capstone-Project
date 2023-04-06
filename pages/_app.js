@@ -11,6 +11,7 @@ export default function App({ Component, pageProps }) {
     when: "",
     who: [],
   });
+
   const [selectedFriend, setSelectedFriend] = useState("Me");
 
   function handleAddToDo(item) {
