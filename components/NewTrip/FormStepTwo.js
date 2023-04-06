@@ -15,7 +15,7 @@ function FormStepTwo({
         type="text"
         id="who"
         name="who"
-        placeholder="e.g. Luke, Leia, Chewie, Han"
+        placeholder="e.g. Luke, Leia, Chewie, Han..."
         required
         onChange={onFormInput}
       />
@@ -54,6 +54,11 @@ const StyledInput = styled.input`
   :focus {
     outline: none;
     border: 2px solid #db9d47;
+  }
+
+  ::placeholder {
+    color: black;
+    opacity: 0.3;
   }
 `;
 
