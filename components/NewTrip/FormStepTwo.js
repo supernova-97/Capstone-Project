@@ -36,7 +36,6 @@ function FormStepTwo({
         ))}
       </StyledList>
       <ButtonMenu>
-        <Button onClick={nextStep}>Back</Button>
         <Button type="submit">Create new Trip</Button>
       </ButtonMenu>
     </>

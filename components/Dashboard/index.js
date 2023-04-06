@@ -7,7 +7,19 @@ function Dashboard({ tripData }) {
       <MainHeader>CoPlan</MainHeader>
       <DashboardContainer>
         {tripData.name && (
-          <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
+          <>
+            <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
+            <DetailedSection>
+              <TripInfoHeading>Trip name:</TripInfoHeading>
+              <TripInfo>{tripData.name}</TripInfo>
+              <TripInfoHeading>Where to:</TripInfoHeading>
+              <TripInfo>{tripData.where}</TripInfo>
+              <TripInfoHeading>Date:</TripInfoHeading>
+              <TripInfo>{tripData.when}</TripInfo>
+              <TripInfoHeading>Companions:</TripInfoHeading>
+              <TripInfo>{tripData.who.join(", ")}</TripInfo>
+            </DetailedSection>
+          </>
         )}
         {!tripData.name && (
           <>
@@ -29,6 +41,8 @@ const DashboardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   box-shadow: -3px 3px black;
+  height: auto;
+  padding: 10px;
 `;
 
 const MainHeader = styled.h1`
@@ -74,4 +88,22 @@ const NewTripLink = styled(Link)`
   :hover {
     background-color: #db9d47;
   }
+`;
+
+const DetailedSection = styled.dl`
+  display: flex;
+  flex-direction: column;
+`;
+
+const TripInfo = styled.dd`
+  margin: 5px;
+  background-color: #d9ff80;
+  width: fit-content;
+  padding: 5px;
+  box-shadow: -2px 2px black;
+  border: 1px solid black;
+`;
+
+const TripInfoHeading = styled.dt`
+  margin: 25px 0 5px 0;
 `;
