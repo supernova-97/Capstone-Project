@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import Countdown from "../Countdown";
 
 function Dashboard({ tripData }) {
   return (
@@ -8,6 +9,7 @@ function Dashboard({ tripData }) {
       <DashboardContainer>
         {tripData.name && (
           <>
+            <Countdown tripData={tripData} />
             <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
             <DetailedSection>
               <TripInfoHeading>Trip name:</TripInfoHeading>
