@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
     name: "Camping",
     where: "Denmark",
     when: "2023-05-06",
-    who: "",
+    who: ["Me"],
   });
   const [selectedFriend, setSelectedFriend] = useState("Me");
   console.log("selectedFriend:", selectedFriend);
