@@ -1,9 +1,9 @@
 import Dashboard from "../components/Dashboard";
 
-export default function Home() {
+export default function Home({ tripData }) {
   return (
     <main>
-      <Dashboard />
+      <Dashboard tripData={tripData} />
     </main>
   );
 }
