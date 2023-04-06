@@ -1,14 +1,20 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-function Dashboard() {
+function Dashboard({ tripData }) {
   return (
     <>
       <MainHeader>CoPlan</MainHeader>
       <DashboardContainer>
-        <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
-        <NewTripLink href="/new-trip">+</NewTripLink>
-        <p>Add new Trip</p>
+        {tripData.name && (
+          <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
+        )}
+        {!tripData.name && (
+          <>
+            <NewTripLink href="/new-trip">+</NewTripLink>
+            <p>Add new Trip</p>
+          </>
+        )}
       </DashboardContainer>
     </>
   );
@@ -56,12 +62,11 @@ const ToDoBoardLink = styled(Link)`
 const NewTripLink = styled(Link)`
   background-color: #d9ff80;
   color: black;
-  margin: 30px 0 0 0;
-  padding: 5px;
-  height: 35px;
-  width: 35px;
+  margin-top: 20px;
+  padding: 3px;
+  height: 30px;
+  width: 30%;
   border: 2px solid #000;
-  border-radius: 50%;
   box-shadow: -3px 3px black;
   text-align: center;
   text-decoration: none;
