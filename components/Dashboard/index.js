@@ -10,13 +10,13 @@ function Dashboard({ tripData }) {
           <>
             <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
             <DetailedSection>
-              <TripInfoHeading>Trip name:</TripInfoHeading>{" "}
+              <TripInfoHeading>Trip name:</TripInfoHeading>
               <TripInfo>{tripData.name}</TripInfo>
-              <TripInfoHeading>Where to:</TripInfoHeading>{" "}
+              <TripInfoHeading>Where to:</TripInfoHeading>
               <TripInfo>{tripData.where}</TripInfo>
-              <TripInfoHeading>Date:</TripInfoHeading>{" "}
+              <TripInfoHeading>Date:</TripInfoHeading>
               <TripInfo>{tripData.when}</TripInfo>
-              <TripInfoHeading>Companions:</TripInfoHeading>{" "}
+              <TripInfoHeading>Companions:</TripInfoHeading>
               <TripInfo>{tripData.who.join(", ")}</TripInfo>
             </DetailedSection>
           </>
@@ -90,12 +90,12 @@ const NewTripLink = styled(Link)`
   }
 `;
 
-const DetailedSection = styled.section`
+const DetailedSection = styled.dl`
   display: flex;
   flex-direction: column;
 `;
 
-const TripInfo = styled.p`
+const TripInfo = styled.dd`
   margin: 5px;
   background-color: #d9ff80;
   width: fit-content;
@@ -104,6 +104,6 @@ const TripInfo = styled.p`
   border: 1px solid black;
 `;
 
-const TripInfoHeading = styled.h4`
+const TripInfoHeading = styled.dt`
   margin: 25px 0 5px 0;
 `;
