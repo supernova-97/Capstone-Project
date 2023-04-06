@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 function Countdown({ tripData }) {
   const currentDate = new Date();
-  const currentDateSeconds = currentDate.getTime();
+  const currentDateInSeconds = currentDate.getTime();
 
   const tripTime = new Date(tripData.when);
-  const tripTimeAsNumber = tripTime.getTime();
+  const tripTimeInSeconds = tripTime.getTime();
 
-  const difference = tripTimeAsNumber - currentDateSeconds;
+  const difference = tripTimeInSeconds - currentDateInSeconds;
   const days = Math.ceil(difference / (1000 * 60 * 60 * 24));
-  console.log("days:", days);
 
   return (
     <>
