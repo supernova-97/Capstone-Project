@@ -1,18 +1,30 @@
 import styled from "styled-components";
 
-function Form({ onAddToDo }) {
+function Form({ onAddToDo, tripData, setSelectedFriend, selectedFriend }) {
   function handleSubmit(event) {
     event.preventDefault();
     onAddToDo(event.target.todo.value);
     event.target.reset();
   }
 
+  const handleChange = (event) => {
+    setSelectedFriend(event.target.value);
+  };
+
+  const friends = tripData.who;
   return (
     <>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="todo">To do:</label>
-
         <StyledInput type="text" id="todo" name="todo" required />
+        <label>Choose a friend:</label>
+        <StyledSelect value={selectedFriend} onChange={handleChange}>
+          {friends.map((friend, index) => (
+            <option value={friend} key={index}>
+              {friend}
+            </option>
+          ))}
+        </StyledSelect>
         <StyledAddButton type="submit">Add</StyledAddButton>
       </StyledForm>
     </>
@@ -59,5 +71,17 @@ const StyledAddButton = styled.button`
     background-color: #fff;
     box-shadow: -2px 3px black;
     transition: none;
+  }
+`;
+
+const StyledSelect = styled.select`
+  padding: 2px 20px;
+  border: 1px solid #000;
+  box-shadow: -2px 2px black;
+  background-color: #d9ff80;
+
+  :focus {
+    outline: none;
+    border: 2px solid #db9d47;
   }
 `;

@@ -6,17 +6,11 @@ import styled from "styled-components";
 import FormStepOne from "./FormStepOne";
 import FormStepTwo from "./FormStepTwo";
 
-function NewTrip({ onAddToDo }) {
+function NewTrip({ onAddToDo, tripData, setTripData }) {
   const [formToDos, setFormToDos] = useState([]);
   let toDoInput = { todo: "" };
   const toDoInputRef = useRef(null);
   const [step, setStep] = useState(true);
-  const [data, setData] = useState({
-    name: "",
-    where: "",
-    when: 0,
-    who: "",
-  });
 
   const router = useRouter();
 
@@ -24,10 +18,10 @@ function NewTrip({ onAddToDo }) {
     e.preventDefault();
 
     if (
-      data.name === "" ||
-      data.where === "" ||
-      data.when === 0 ||
-      data.who === ""
+      tripData.name === "" ||
+      tripData.where === "" ||
+      tripData.when === 0 ||
+      tripData.who === ""
     ) {
       return alert("Missing info!");
     }
@@ -36,7 +30,18 @@ function NewTrip({ onAddToDo }) {
       onAddToDo(todo.todo);
     });
 
+    setTripData({
+      ...tripData,
+      who: separateFriends(e.target.who.value, tripData.who),
+    });
+
     router.push("/");
+  }
+
+  function separateFriends(who) {
+    let separatedArray = ["Me", ...who.split(", ")];
+
+    return separatedArray;
   }
 
   function handleToDoInput(e) {
@@ -48,9 +53,9 @@ function NewTrip({ onAddToDo }) {
     toDoInputRef.current.value = "";
   }
 
-  function handleChange(e) {
-    setData({
-      ...data,
+  function handleFormInput(e) {
+    setTripData({
+      ...tripData,
       [e.target.name]: e.target.value,
     });
   }
@@ -66,14 +71,14 @@ function NewTrip({ onAddToDo }) {
 
         <StyledForm onSubmit={handleSubmit}>
           {step ? (
-            <FormStepOne nextStep={nextStep} handleChange={handleChange} />
+            <FormStepOne nextStep={nextStep} onFormInput={handleFormInput} />
           ) : (
             <FormStepTwo
               nextStep={nextStep}
-              handleChange={handleChange}
+              onFormInput={handleFormInput}
               onAddToDo={handleAddToDo}
               formToDos={formToDos}
-              handleToDoInput={handleToDoInput}
+              onToDoInput={handleToDoInput}
               toDoInputRef={toDoInputRef}
             />
           )}

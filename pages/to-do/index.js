@@ -2,12 +2,30 @@ import Heading from "../../components/Heading";
 import Form from "../../components/Form";
 import List from "../../components/List";
 
-function ToDoBoard({ onAddToDo, onDeleteToDo, toDos }) {
+function ToDoBoard({
+  onAddToDo,
+  onDeleteToDo,
+  toDos,
+  tripData,
+  selectedFriend,
+  setSelectedFriend,
+}) {
   return (
     <>
       <Heading>To-Do Board</Heading>
-      <Form onAddToDo={onAddToDo} />
-      <List toDos={toDos} onDeleteToDo={onDeleteToDo} />
+      <Form
+        onAddToDo={onAddToDo}
+        tripData={tripData}
+        selectedFriend={selectedFriend}
+        setSelectedFriend={setSelectedFriend}
+      />
+      <List
+        toDos={toDos}
+        onDeleteToDo={onDeleteToDo}
+        tripData={tripData}
+        selectedFriend={selectedFriend}
+        setSelectedFriend={setSelectedFriend}
+      />
     </>
   );
 }

@@ -2,9 +2,9 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { useState } from "react";
 
-function List({ toDos, onDeleteToDo }) {
+function List({ toDos, onDeleteToDo, tripData }) {
   const [isCheckedArray, setIsCheckedArray] = useState({});
-
+  const friends = tripData.who;
   function toggleIsChecked(id) {
     setIsCheckedArray((prevState) => ({
       ...prevState,
@@ -15,28 +15,38 @@ function List({ toDos, onDeleteToDo }) {
   return (
     <>
       <ListWrapper>
-        <ul>
-          {toDos.map((toDo) => (
-            <ListItem key={toDo.id}>
-              <StyledCheckBox
-                type="checkbox"
-                onClick={() => toggleIsChecked(toDo.id)}
-              />
-
-              <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
-                {toDo.todo}
-              </StyledText>
-
-              <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
-                x
-              </StyledDeleteButton>
-            </ListItem>
-          ))}
-        </ul>
+        {friends.map((friend, index) => (
+          <StyledSection key={index}>
+            <SectionHeading>{friend}</SectionHeading>
+            <ul>
+              {toDos.map((toDo) => {
+                if (friend === toDo.section) {
+                  return (
+                    <ListItem key={toDo.id}>
+                      <StyledCheckBox
+                        type="checkbox"
+                        onClick={() => toggleIsChecked(toDo.id)}
+                      />
+                      <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
+                        {toDo.todo}
+                      </StyledText>
+                      <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
+                        x
+                      </StyledDeleteButton>
+                    </ListItem>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+            </ul>
+          </StyledSection>
+        ))}
         <StyledConditionalText>
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
         </StyledConditionalText>
       </ListWrapper>
+
       <DashboardLink href="/">Dashboard</DashboardLink>
     </>
   );
@@ -49,7 +59,6 @@ export default List;
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  border-bottom: 2px solid black;
   width: fit-content;
   padding: 10px;
   margin: 0px;
@@ -125,4 +134,14 @@ const DashboardLink = styled(Link)`
   :hover {
     background-color: #db9d47;
   }
+`;
+
+const StyledSection = styled.section`
+  margin: 0 20px;
+  display: flex;
+  border-bottom: 2px solid black;
+`;
+
+const SectionHeading = styled.h3`
+  color: #db9d47;
 `;
