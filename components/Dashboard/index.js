@@ -11,6 +11,7 @@ function Dashboard({ tripData }) {
           <>
             <Countdown tripData={tripData} />
             <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
+            <JournalLink href="/journal">Journal</JournalLink>
             <DetailedSection>
               <TripInfoHeading>Trip name:</TripInfoHeading>
               <TripInfo>{tripData.name}</TripInfo>
@@ -59,6 +60,23 @@ const MainHeader = styled.h1`
 `;
 
 const ToDoBoardLink = styled(Link)`
+  background-color: #d9ff80;
+  color: black;
+  margin: 30px;
+  padding: 14px;
+  height: 50px;
+  width: 150px;
+  border: 2px solid #000;
+  box-shadow: -3px 3px black;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s ease-out;
+  :hover {
+    background-color: #db9d47;
+  }
+`;
+
+const JournalLink = styled(Link)`
   background-color: #d9ff80;
   color: black;
   margin: 30px;
