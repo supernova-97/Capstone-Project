@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
     destination: "",
     description: "",
   });
-  console.log("journals:", journalData);
+
   const [selectedFriend, setSelectedFriend] = useState("Me");
 
   function handleAddToDo(item) {

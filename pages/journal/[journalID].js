@@ -5,10 +5,7 @@ import styled from "styled-components";
 function JournalDetail({ journals }) {
   const router = useRouter();
   const { journalID } = router.query;
-  console.log("router:", journalID);
-  console.log("journals in slug", journals);
   const currentJournal = journals.find((journal) => journal.id === journalID);
-  console.log("currentJournal:", currentJournal);
 
   if (!currentJournal) {
     return <p>Oopsie woopsie :(</p>;
