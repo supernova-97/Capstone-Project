@@ -7,7 +7,7 @@ function Journal({ journalData, journals }) {
       <JournalWrapper>
         <h1>Journal</h1>
         <EntriesWrapper>
-          {journalData ? (
+          {journals.length > 0 ? (
             <ul>
               {journals.map((journal) => (
                 <p key={journal.id}>
