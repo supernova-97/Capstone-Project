@@ -6,18 +6,19 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
   const [tripData, setTripData] = useState({
-    name: "Camping Trip",
-    where: "Denmark",
-    when: "2023-06-27",
-    who: ["Finn, Jake, BMO"],
+    name: "",
+    where: "",
+    when: "",
+    who: [],
   });
 
+  const [journals, setJournals] = useState([]);
   const [journalData, setJournalData] = useState({
     name: "",
     destination: "",
     description: "",
   });
-  console.log("journalData in app:", journalData.destination);
+  console.log("journals:", journalData);
   const [selectedFriend, setSelectedFriend] = useState("Me");
 
   function handleAddToDo(item) {
@@ -49,6 +50,8 @@ export default function App({ Component, pageProps }) {
         setSelectedFriend={setSelectedFriend}
         journalData={journalData}
         setJournalData={setJournalData}
+        journals={journals}
+        setJournals={setJournals}
       />
     </>
   );
