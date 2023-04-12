@@ -1,24 +1,25 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-function JournalEntry({ journalData, setJournalData }) {
+function JournalEntries({ journalData, setJournalData }) {
   return (
     <>
       <JournalWrapper>
         <h1>Journal</h1>
         <EntryWrapper>
           <EntryHeading>
-            {journalData.name} in {journalData.destination}
+            {journalData[0].name} in {journalData[0].destination}
           </EntryHeading>
-          <Description>{journalData.description}</Description>
+          <Description>{journalData[0].description}</Description>
         </EntryWrapper>
+
         <DashboardLink href="/">Dashboard</DashboardLink>
       </JournalWrapper>
     </>
   );
 }
 
-export default JournalEntry;
+export default JournalEntries;
 
 const DashboardLink = styled(Link)`
   background-color: #d9ff80;
