@@ -1,32 +1,30 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-function Journal({ journalData, journals }) {
+function JournalPage({ journalData, journals }) {
   return (
-    <>
-      <JournalWrapper>
-        <h1>Journal</h1>
-        <EntriesWrapper>
-          {journals.length > 0 ? (
-            <>
-              {journals.map((journal) => (
-                <JournalLink key={journal.id} href={`/journal/${journal.id}`}>
-                  {journal.name} in {journal.destination}
-                </JournalLink>
-              ))}
-            </>
-          ) : (
-            "No Journals yet. Create one!"
-          )}
-          <NewJournalButton href="/journal/form">New Journal</NewJournalButton>
-        </EntriesWrapper>
-        <DashboardLink href="/">Dashboard</DashboardLink>
-      </JournalWrapper>
-    </>
+    <JournalWrapper>
+      <h1>Journal</h1>
+      <EntriesWrapper>
+        {journals.length > 0 ? (
+          <>
+            {journals.map((journal) => (
+              <JournalLink key={journal.id} href={`/journal/${journal.id}`}>
+                {journal.name} in {journal.destination}
+              </JournalLink>
+            ))}
+          </>
+        ) : (
+          "No Journals yet. Create one!"
+        )}
+        <NewJournalButton href="/journal/form">New Journal</NewJournalButton>
+      </EntriesWrapper>
+      <DashboardLink href="/">Dashboard</DashboardLink>
+    </JournalWrapper>
   );
 }
 
-export default Journal;
+export default JournalPage;
 
 const JournalWrapper = styled.div`
   display: flex;
@@ -34,7 +32,7 @@ const JournalWrapper = styled.div`
   align-items: center;
 `;
 
-const EntriesWrapper = styled.div`
+const EntriesWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

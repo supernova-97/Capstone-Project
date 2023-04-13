@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
 function JournalForm({ onJournalFormInput, onJournalSubmit }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    onJournalSubmit();
+  }
+
   return (
     <>
-      <StyledForm onSubmit={onJournalSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="name">Give your trip a name:</label>
         <StyledInput
           type="text"

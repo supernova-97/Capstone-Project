@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import JournalForm from "../../components/JournalForm/JournalForm";
+import JournalForm from "../../components/JournalForm";
 import styled from "styled-components";
 import Link from "next/link";
 import { uid } from "uid";
@@ -15,8 +15,6 @@ function Form({ journalData, setJournalData, journals, setJournals }) {
   }
 
   function handleJournalSubmit(e) {
-    e.preventDefault();
-
     if (
       journalData.name === "" ||
       journalData.destination === "" ||
