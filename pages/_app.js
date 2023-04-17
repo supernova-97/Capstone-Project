@@ -12,6 +12,13 @@ export default function App({ Component, pageProps }) {
     who: [],
   });
 
+  const [journals, setJournals] = useState([]);
+  const [journalData, setJournalData] = useState({
+    name: "",
+    destination: "",
+    description: "",
+  });
+
   const [selectedFriend, setSelectedFriend] = useState("Me");
 
   function handleAddToDo(item) {
@@ -41,6 +48,10 @@ export default function App({ Component, pageProps }) {
         setTripData={setTripData}
         selectedFriend={selectedFriend}
         setSelectedFriend={setSelectedFriend}
+        journalData={journalData}
+        setJournalData={setJournalData}
+        journals={journals}
+        setJournals={setJournals}
       />
     </>
   );
