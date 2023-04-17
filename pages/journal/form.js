@@ -15,13 +15,6 @@ function Form({ journalData, setJournalData, journals, setJournals }) {
   }
 
   function handleJournalSubmit() {
-    if (
-      journalData.name === "" ||
-      journalData.destination === "" ||
-      journalData.description === ""
-    ) {
-      return alert("Missing info!");
-    }
     setJournals([...journals, { id: uid(), ...journalData }]);
     setJournalData({ name: "", destination: "", description: "" });
     router.push("/journal");

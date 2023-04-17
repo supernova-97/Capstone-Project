@@ -15,6 +15,7 @@ function JournalForm({ onJournalFormInput, onJournalSubmit }) {
           name="name"
           id="name"
           onChange={onJournalFormInput}
+          required
         />
         <label htmlFor="destination">Where did you go?</label>
         <StyledInput
@@ -22,6 +23,7 @@ function JournalForm({ onJournalFormInput, onJournalSubmit }) {
           name="destination"
           id="destination"
           onChange={onJournalFormInput}
+          required
         />
         <label htmlFor="description">Tell us about your trip:</label>
         <StyledInput
@@ -29,6 +31,7 @@ function JournalForm({ onJournalFormInput, onJournalSubmit }) {
           name="description"
           id="description"
           onChange={onJournalFormInput}
+          required
         />
         <AddButton type="submit">Add Journal</AddButton>
       </StyledForm>
