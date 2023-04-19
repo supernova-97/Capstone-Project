@@ -6,18 +6,31 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
   const [tripData, setTripData] = useState({
-    name: "",
-    where: "",
-    when: "",
-    who: [],
+    name: "Camping Trip",
+    where: "Denmark",
+    when: "2023-05-05",
+    who: ["Me"],
   });
 
-  const [journals, setJournals] = useState([]);
+  const [journals, setJournals] = useState([
+    {
+      name: "Camping",
+      destination: "Denmark",
+      description: "So fun",
+      id: "1234",
+    },
+  ]);
   const [journalData, setJournalData] = useState({
     name: "",
     destination: "",
     description: "",
   });
+
+  const [products, setProducts] = useState([]);
+
+  function addProduct(newProduct) {
+    setProducts([...products, newProduct]);
+  }
 
   const [selectedFriend, setSelectedFriend] = useState("Me");
 
@@ -52,6 +65,8 @@ export default function App({ Component, pageProps }) {
         setJournalData={setJournalData}
         journals={journals}
         setJournals={setJournals}
+        addProduct={addProduct}
+        products={products}
       />
     </>
   );
