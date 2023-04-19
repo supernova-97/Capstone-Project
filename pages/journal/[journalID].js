@@ -4,7 +4,7 @@ import styled from "styled-components";
 import EntryForm from "../../components/EntryForm";
 import Image from "next/image";
 
-function JournalDetail({ journals, products, addProduct }) {
+function JournalDetail({ journals, entries, addEntry }) {
   const router = useRouter();
   const { journalID } = router.query;
   const currentJournal = journals.find((journal) => journal.id === journalID);
@@ -14,7 +14,7 @@ function JournalDetail({ journals, products, addProduct }) {
   }
 
   const { name, destination, description } = currentJournal;
-
+  console.log("current:", currentJournal.name);
   return (
     <>
       <Wrapper>
@@ -22,19 +22,27 @@ function JournalDetail({ journals, products, addProduct }) {
         <Destination>in {destination}</Destination>
         <Description>&quot;{description}&quot;</Description>
         <h3>Your highlights:</h3>
-        {products &&
-          products.map((product) => (
-            <EntryWrapper key={product.id}>
-              <StyledImage
-                src={product.image.url}
-                alt="idk"
-                width="300"
-                height="200"
-              />
-              <p>{product.text}</p>
-            </EntryWrapper>
-          ))}
-        <EntryForm addProduct={addProduct} />
+        {entries &&
+          entries.map((entry) => {
+            if (entry.entryID === currentJournal.name) {
+              return (
+                <EntryWrapper key={entry.id}>
+                  <StyledImage
+                    src={entry.image.url}
+                    alt="idk"
+                    width="300"
+                    height="200"
+                  />
+                  <p>{entry.text}</p>
+                </EntryWrapper>
+              );
+            }
+          })}
+        <EntryForm
+          addEntry={addEntry}
+          journals={journals}
+          journalID={journalID}
+        />
       </Wrapper>
       <BackToJournalsButton href="/journal">
         back to Journals
@@ -56,7 +64,7 @@ const Heading = styled.h1`
   margin-bottom: 0;
   background-color: #d9ff80;
   padding: 10px;
-  width: 30%;
+  width: fit-content;
   text-align: center;
   border: 2px solid black;
   box-shadow: -4px 4px black;
