@@ -6,10 +6,10 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
   const [tripData, setTripData] = useState({
-    name: "",
-    where: "",
-    when: "",
-    who: [],
+    name: "Camping",
+    where: "Denmark",
+    when: "2023-05-05",
+    who: ["Me", "you", "Ariana"],
   });
 
   const [journals, setJournals] = useState([]);
@@ -44,6 +44,7 @@ export default function App({ Component, pageProps }) {
         onAddToDo={handleAddToDo}
         onDeleteToDo={handleDeleteToDo}
         toDos={toDos}
+        setToDos={setToDos}
         tripData={tripData}
         setTripData={setTripData}
         selectedFriend={selectedFriend}
