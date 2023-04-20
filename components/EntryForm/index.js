@@ -2,16 +2,14 @@ import { useState } from "react";
 import { uid } from "uid";
 import styled from "styled-components";
 
-function EntryForm({ addEntry, journals, journalID }) {
+function EntryForm({ addEntry }) {
   const [entry, setEntry] = useState({ image: {}, text: "" });
   const REACT_APP_CLOUDINARY_CLOUD = "dkoh6qivp";
   const REACT_APP_CLOUDINARY_PRESET = "CoPlan";
 
-  const currentJournal = journals.find((journal) => journal.id === journalID);
-
   function handleSubmit(event) {
     event.preventDefault();
-    addEntry({ ...entry, id: uid(), entryId: currentJournal.name });
+    addEntry({ ...entry, id: uid() });
     event.target.reset();
   }
 
@@ -19,10 +17,10 @@ function EntryForm({ addEntry, journals, journalID }) {
     setEntry({ ...entry, [e.target.name]: e.target.value });
   }
 
-  const uploadImage = async (event) => {
+  async function uploadImage(e) {
     try {
       const url = `https://api.cloudinary.com/v1_1/${REACT_APP_CLOUDINARY_CLOUD}/upload`;
-      const image = event.target.files[0];
+      const image = e.target.files[0];
 
       const fileData = new FormData();
       fileData.append("file", image);
@@ -37,7 +35,7 @@ function EntryForm({ addEntry, journals, journalID }) {
     } catch (error) {
       console.error(error.message);
     }
-  };
+  }
 
   return (
     <StyledForm onSubmit={handleSubmit}>

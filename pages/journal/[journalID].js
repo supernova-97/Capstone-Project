@@ -4,17 +4,32 @@ import styled from "styled-components";
 import EntryForm from "../../components/EntryForm";
 import Image from "next/image";
 
-function JournalDetail({ journals, entries, addEntry }) {
+function JournalDetail({ journals, setJournals }) {
   const router = useRouter();
   const { journalID } = router.query;
   const currentJournal = journals.find((journal) => journal.id === journalID);
+
+  function addEntry(newEntry) {
+    setJournals((prevJournals) => {
+      const updatedJournals = prevJournals.map((journal) => {
+        if (journal.id === currentJournal.id) {
+          return {
+            ...journal,
+            entries: [...journal.entries, newEntry],
+          };
+        }
+        return journal;
+      });
+      return updatedJournals;
+    });
+  }
 
   if (!currentJournal) {
     return <p>Oopsie woopsie :(</p>;
   }
 
-  const { name, destination, description } = currentJournal;
-  console.log("current:", currentJournal.name);
+  const { name, destination, description, entries } = currentJournal;
+
   return (
     <>
       <Wrapper>
@@ -22,22 +37,24 @@ function JournalDetail({ journals, entries, addEntry }) {
         <Destination>in {destination}</Destination>
         <Description>&quot;{description}&quot;</Description>
         <h3>Your highlights:</h3>
-        {entries &&
+        {entries ? (
           entries.map((entry) => {
-            if (entry.entryID === currentJournal.name) {
-              return (
-                <EntryWrapper key={entry.id}>
-                  <StyledImage
-                    src={entry.image.url}
-                    alt="idk"
-                    width="300"
-                    height="200"
-                  />
-                  <p>{entry.text}</p>
-                </EntryWrapper>
-              );
-            }
-          })}
+            return (
+              <EntryWrapper key={entry.id}>
+                <StyledImage
+                  src={entry.image.url}
+                  alt="idk"
+                  width="300"
+                  height="200"
+                />
+                <p>{entry.text}</p>
+              </EntryWrapper>
+            );
+          })
+        ) : (
+          <h3>No entries</h3>
+        )}
+
         <EntryForm
           addEntry={addEntry}
           journals={journals}

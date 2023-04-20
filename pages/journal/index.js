@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-function JournalPage({ journalData, journals }) {
+function JournalPage({ journals }) {
   return (
     <JournalWrapper>
       <h1>Journal</h1>
