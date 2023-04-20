@@ -45,7 +45,8 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
-  background-color: #d9ff80;
+  background-color: #fff;
+  color: #000;
   height: 1.7rem;
   margin: 1.3rem;
   box-shadow: -2px 3px black;
@@ -57,7 +58,8 @@ const StyledInput = styled.input`
 `;
 
 const StyledAddButton = styled.button`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 1px solid black;
   box-shadow: -2px 3px black;
   margin: 15px;
@@ -78,10 +80,11 @@ const StyledSelect = styled.select`
   padding: 2px 20px;
   border: 1px solid #000;
   box-shadow: -2px 2px black;
-  background-color: #d9ff80;
+  background-color: #fff;
+  color: #000;
 
   :focus {
     outline: none;
-    border: 2px solid #db9d47;
+    border: 2px solid #000;
   }
 `;

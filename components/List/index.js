@@ -18,7 +18,7 @@ function List({ toDos, onDeleteToDo, tripData }) {
         {friends.map((friend, index) => (
           <StyledSection key={index}>
             <SectionHeading>{friend}</SectionHeading>
-            <ul>
+            <StyledList>
               {toDos.map((toDo) => {
                 if (friend === toDo.section) {
                   return (
@@ -39,15 +39,16 @@ function List({ toDos, onDeleteToDo, tripData }) {
                   return null;
                 }
               })}
-            </ul>
+            </StyledList>
           </StyledSection>
         ))}
         <StyledConditionalText>
           {toDos.length > 0 ? "" : "No to-dos yet. Create some!"}
         </StyledConditionalText>
       </ListWrapper>
-
-      <DashboardLink href="/">Dashboard</DashboardLink>
+      <StyledFooter>
+        <DashboardLink href="/">Dashboard</DashboardLink>
+      </StyledFooter>
     </>
   );
 }
@@ -55,13 +56,14 @@ function List({ toDos, onDeleteToDo, tripData }) {
 export default List;
 
 //Styling
+const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+`;
 
 const ListItem = styled.li`
   display: flex;
   align-items: center;
-  width: fit-content;
-  padding: 10px;
-  margin: 0px;
 `;
 
 const StyledCheckBox = styled.input`
@@ -69,7 +71,7 @@ const StyledCheckBox = styled.input`
   height: 15px;
   width: 15px;
   margin: 10px;
-  background-color: #d9ff80;
+  background-color: var(--button-color);
   border: 1px solid black;
   box-shadow: -1px 1px black;
   :checked {
@@ -78,7 +80,8 @@ const StyledCheckBox = styled.input`
 `;
 
 const StyledDeleteButton = styled.button`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   height: fit-content;
   width: fit-content;
   border-radius: 20%;
@@ -122,14 +125,12 @@ const ListWrapper = styled.section`
 `;
 
 const DashboardLink = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 2px solid black;
   box-shadow: -2px 2px black;
-  margin: 25px 10px 0 10px;
-  padding: 5px;
-  width: 40%;
+  padding: 5px 15px;
   text-decoration: none;
-  color: black;
   transition: 0.2s ease-out;
   :hover {
     background-color: #db9d47;
@@ -139,9 +140,23 @@ const DashboardLink = styled(Link)`
 const StyledSection = styled.section`
   margin: 0 20px;
   display: flex;
+  flex-direction: column;
   border-bottom: 2px solid black;
 `;
 
 const SectionHeading = styled.h3`
-  color: #db9d47;
+  color: #fff;
+  margin: 5px;
+`;
+
+const StyledFooter = styled.footer`
+  border-top: 2px solid black;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
