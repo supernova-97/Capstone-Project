@@ -42,7 +42,8 @@ function JournalForm({ onJournalFormInput, onJournalSubmit }) {
 export default JournalForm;
 
 const StyledInput = styled.input`
-  background-color: #d9ff80;
+  background-color: #fff;
+  color: #000;
   height: 1.7rem;
   margin: 1.3rem;
   box-shadow: -2px 3px black;
@@ -61,7 +62,8 @@ const StyledForm = styled.form`
 `;
 
 const AddButton = styled.button`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   font-size: 1rem;
   border: 2px solid black;
   box-shadow: -2px 2px black;

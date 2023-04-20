@@ -10,8 +10,7 @@ function Dashboard({ tripData }) {
         {tripData.name && (
           <>
             <Countdown tripData={tripData} />
-            <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
-            <JournalLink href="/journal">Journal</JournalLink>
+
             <DetailedSection>
               <TripInfoHeading>Trip name:</TripInfoHeading>
               <TripInfo>{tripData.name}</TripInfo>
@@ -22,6 +21,10 @@ function Dashboard({ tripData }) {
               <TripInfoHeading>Companions:</TripInfoHeading>
               <TripInfo>{tripData.who.join(", ")}</TripInfo>
             </DetailedSection>
+            <StyledFooter>
+              <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
+              <JournalLink href="/journal">Journal</JournalLink>
+            </StyledFooter>
           </>
         )}
         {!tripData.name && (
@@ -85,10 +88,9 @@ const WelcomeText = styled.p`
 const ToDoBoardLink = styled(Link)`
   background-color: var(--button-color);
   color: black;
-  margin: 30px;
-  padding: 14px;
-  height: 50px;
-  width: 150px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  width: fit-content;
   border: 2px solid #000;
   box-shadow: -3px 3px black;
   text-align: center;
@@ -102,10 +104,9 @@ const ToDoBoardLink = styled(Link)`
 const JournalLink = styled(Link)`
   background-color: var(--button-color);
   color: black;
-  margin: 30px;
-  padding: 14px;
-  height: 50px;
-  width: 150px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  width: fit-content;
   border: 2px solid #000;
   box-shadow: -3px 3px black;
   text-align: center;
@@ -139,13 +140,26 @@ const DetailedSection = styled.dl`
 
 const TripInfo = styled.dd`
   margin: 5px;
+  font-size: 1.1rem;
   width: fit-content;
   padding: 5px;
-  box-shadow: -2px 2px black;
-  border: 1px solid black;
+  /* box-shadow: -2px 2px black; */
+  border-bottom: 2px solid black;
 `;
 
 const TripInfoHeading = styled.dt`
   margin: 25px 0 5px 0;
-  font-size: 20px;
+  font-size: 1.7rem;
+`;
+
+const StyledFooter = styled.footer`
+  border-top: 2px solid black;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

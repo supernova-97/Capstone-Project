@@ -37,26 +37,24 @@ const EntryWrapper = styled.section`
 
 const Heading = styled.h1`
   font-size: 2.2rem;
-  margin-bottom: 0;
-  background-color: #d9ff80;
-  padding: 10px;
-  width: 30%;
+  margin: 10px 0 0 0;
   text-align: center;
-  border: 2px solid black;
-  box-shadow: -4px 4px black;
 `;
 
 const Destination = styled.h2`
-  background-color: #d9ff80;
-  padding: 5px 15px;
+  text-decoration: underline;
+  margin: 5px 0 5px 0;
+  text-underline-offset: 5px;
 `;
 
 const Description = styled.p`
   font-size: 1.1rem;
+  margin: 30px;
 `;
 
 const BackToJournalsButton = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 2px solid black;
   box-shadow: -2px 2px black;
   margin: 45px 10px 0 10px;
