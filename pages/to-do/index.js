@@ -6,6 +6,7 @@ function ToDoBoard({
   onAddToDo,
   onDeleteToDo,
   toDos,
+  setToDos,
   tripData,
   selectedFriend,
   setSelectedFriend,
@@ -21,6 +22,7 @@ function ToDoBoard({
       />
       <List
         toDos={toDos}
+        setToDos={setToDos}
         onDeleteToDo={onDeleteToDo}
         tripData={tripData}
         selectedFriend={selectedFriend}

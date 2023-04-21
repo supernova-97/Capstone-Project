@@ -2,9 +2,13 @@ import Link from "next/link";
 import styled, { css } from "styled-components";
 import { useState } from "react";
 
-function List({ toDos, onDeleteToDo, tripData }) {
+function List({ toDos, setToDos, onDeleteToDo, tripData }) {
   const [isCheckedArray, setIsCheckedArray] = useState({});
+  const [todoEditing, setTodoEditing] = useState(null);
+  const [editText, setEditText] = useState("");
+
   const friends = tripData.who;
+
   function toggleIsChecked(id) {
     setIsCheckedArray((prevState) => ({
       ...prevState,
@@ -12,6 +16,19 @@ function List({ toDos, onDeleteToDo, tripData }) {
     }));
   }
 
+  function editTodo(id) {
+    const updatedTodos = [...toDos].map((todo) => {
+      if (todo.id === id) {
+        todo.todo = editText;
+      }
+      return todo;
+    });
+    setToDos(updatedTodos);
+    setTodoEditing(null);
+    setEditText("");
+  }
+
+  console.log("toDos:", toDos);
   return (
     <>
       <ListWrapper>
@@ -27,12 +44,31 @@ function List({ toDos, onDeleteToDo, tripData }) {
                         type="checkbox"
                         onClick={() => toggleIsChecked(toDo.id)}
                       />
-                      <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
-                        {toDo.todo}
-                      </StyledText>
+
+                      {todoEditing === toDo.id ? (
+                        <input
+                          type="text"
+                          onChange={(e) => setEditText(e.target.value)}
+                          value={editText}
+                          placeholder={toDo.todo}
+                        />
+                      ) : (
+                        <StyledText isCheckedArray={isCheckedArray[toDo.id]}>
+                          {toDo.todo}
+                        </StyledText>
+                      )}
+
                       <StyledDeleteButton onClick={() => onDeleteToDo(toDo.id)}>
                         x
                       </StyledDeleteButton>
+
+                      {todoEditing === toDo.id ? (
+                        <button onClick={() => editTodo(toDo.id)}>Save</button>
+                      ) : (
+                        <button onClick={() => setTodoEditing(toDo.id)}>
+                          Edit
+                        </button>
+                      )}
                     </ListItem>
                   );
                 } else {

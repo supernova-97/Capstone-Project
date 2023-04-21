@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }) {
         onAddToDo={handleAddToDo}
         onDeleteToDo={handleDeleteToDo}
         toDos={toDos}
+        setToDos={setToDos}
         tripData={tripData}
         setTripData={setTripData}
         selectedFriend={selectedFriend}
