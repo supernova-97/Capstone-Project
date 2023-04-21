@@ -41,12 +41,7 @@ function JournalDetail({ journals, setJournals }) {
           entries.map((entry) => {
             return (
               <EntryWrapper key={entry.id}>
-                <StyledImage
-                  src={entry.image.url}
-                  alt="idk"
-                  width="300"
-                  height="200"
-                />
+                <StyledImage src={entry.image.url} alt="highlight pictures" />
                 <p>{entry.text}</p>
               </EntryWrapper>
             );
@@ -124,4 +119,6 @@ const EntryWrapper = styled.section`
 const StyledImage = styled.img`
   border-radius: 5px;
   box-shadow: -4px 4px 5px #000;
+  height: 300px;
+  width: 300px;
 `;
