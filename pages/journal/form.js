@@ -16,7 +16,7 @@ function Form({ journalData, setJournalData, journals, setJournals }) {
 
   function handleJournalSubmit() {
     setJournals([...journals, { id: uid(), ...journalData }]);
-    setJournalData({ name: "", destination: "", description: "" });
+    setJournalData({ name: "", destination: "", description: "", entries: [] });
     router.push("/journal");
   }
 
