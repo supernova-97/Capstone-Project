@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
     name: "Camping",
     where: "Denmark",
     when: "2023-05-05",
-    who: ["Me", "you", "Ariana"],
+    who: ["Me", "Britney", "Ariana", "Rihanna"],
   });
 
   const [journals, setJournals] = useState([]);
