@@ -13,6 +13,7 @@ function Dashboard({ tripData }) {
             <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
             <JournalLink href="/journal">Journal</JournalLink>
             <DetailedSection>
+              <Link href="/dashboard-edit">Edit Info</Link>
               <TripInfoHeading>Trip name:</TripInfoHeading>
               <TripInfo>{tripData.name}</TripInfo>
               <TripInfoHeading>Where to:</TripInfoHeading>
