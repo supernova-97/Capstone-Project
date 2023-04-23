@@ -10,8 +10,7 @@ function Dashboard({ tripData }) {
         {tripData.name && (
           <>
             <Countdown tripData={tripData} />
-            <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
-            <JournalLink href="/journal">Journal</JournalLink>
+
             <DetailedSection>
               <TripInfoHeading>Trip name:</TripInfoHeading>
               <TripInfo>{tripData.name}</TripInfo>
@@ -22,13 +21,29 @@ function Dashboard({ tripData }) {
               <TripInfoHeading>Companions:</TripInfoHeading>
               <TripInfo>{tripData.who.join(", ")}</TripInfo>
             </DetailedSection>
+            <StyledFooter>
+              <ToDoBoardLink href="/to-do">To-do-board</ToDoBoardLink>
+              <JournalLink href="/journal">Journal</JournalLink>
+            </StyledFooter>
           </>
         )}
         {!tripData.name && (
-          <>
-            <NewTripLink href="/new-trip">+</NewTripLink>
-            <p>Add new Trip</p>
-          </>
+          <WelcomeSection>
+            <SubHeader>Welcome to CoPlan!</SubHeader>
+            <WelcomeText>
+              Planning your trips has never been easier. Create a trip to use
+              the To-Do-Board, which will give you a handy overview over things
+              you need to prepare.
+            </WelcomeText>
+            <WelcomeText>
+              You can assign the to-dos to friends and check your progress.
+            </WelcomeText>
+            <WelcomeText>
+              Use the Journals to save your highlights during the trip and share
+              it with your friends.
+            </WelcomeText>
+            <NewTripLink href="/new-trip">Add new Trip</NewTripLink>
+          </WelcomeSection>
         )}
       </DashboardContainer>
     </>
@@ -38,6 +53,8 @@ function Dashboard({ tripData }) {
 export default Dashboard;
 
 const DashboardContainer = styled.div`
+  /* background-color: var(--background-color); */
+  background-color: blue;
   margin: 0 5%;
   border: 2px solid black;
   display: flex;
@@ -49,23 +66,32 @@ const DashboardContainer = styled.div`
 `;
 
 const MainHeader = styled.h1`
-  margin: 20px auto;
-  width: 40%;
+  margin: auto;
+  margin: 20px;
   text-align: center;
-  /* background-color: #d9ff80; */
-  background-image: linear-gradient(to bottom right, #96fbc4 0%, #d9ff80 80%);
-  box-shadow: -5px 5px black;
-  height: 50px;
-  padding: 6px;
+`;
+
+const SubHeader = styled.h2`
+  text-decoration: underline;
+  text-underline-offset: 5px;
+`;
+
+const WelcomeSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const WelcomeText = styled.p`
+  text-align: center;
 `;
 
 const ToDoBoardLink = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
   color: black;
-  margin: 30px;
-  padding: 14px;
-  height: 50px;
-  width: 150px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  width: fit-content;
   border: 2px solid #000;
   box-shadow: -3px 3px black;
   text-align: center;
@@ -77,12 +103,11 @@ const ToDoBoardLink = styled(Link)`
 `;
 
 const JournalLink = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
   color: black;
-  margin: 30px;
-  padding: 14px;
-  height: 50px;
-  width: 150px;
+  padding: 5px 10px;
+  margin: 0 10px;
+  width: fit-content;
   border: 2px solid #000;
   box-shadow: -3px 3px black;
   text-align: center;
@@ -94,12 +119,11 @@ const JournalLink = styled(Link)`
 `;
 
 const NewTripLink = styled(Link)`
-  background-color: #d9ff80;
-  color: black;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   margin-top: 20px;
-  padding: 3px;
+  padding: 3px 10px;
   height: 30px;
-  width: 30%;
   border: 2px solid #000;
   box-shadow: -3px 3px black;
   text-align: center;
@@ -117,13 +141,26 @@ const DetailedSection = styled.dl`
 
 const TripInfo = styled.dd`
   margin: 5px;
-  background-color: #d9ff80;
+  font-size: 1.1rem;
   width: fit-content;
   padding: 5px;
-  box-shadow: -2px 2px black;
-  border: 1px solid black;
+  /* box-shadow: -2px 2px black; */
+  border-bottom: 2px solid black;
 `;
 
 const TripInfoHeading = styled.dt`
   margin: 25px 0 5px 0;
+  font-size: 1.7rem;
+`;
+
+const StyledFooter = styled.footer`
+  border-top: 2px solid black;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

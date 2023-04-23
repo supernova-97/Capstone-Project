@@ -42,7 +42,8 @@ const EntriesWrapper = styled.section`
 `;
 
 const DashboardLink = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 2px solid black;
   box-shadow: -2px 2px black;
   margin: 25px 10px 0 10px;
@@ -57,7 +58,8 @@ const DashboardLink = styled(Link)`
 `;
 
 const JournalLink = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   color: black;
   text-decoration: none;
   box-shadow: -2px 2px black;
@@ -71,7 +73,8 @@ const JournalLink = styled(Link)`
 `;
 
 const NewJournalButton = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 2px solid black;
   box-shadow: -2px 2px black;
   margin: 25px 10px 0 10px;

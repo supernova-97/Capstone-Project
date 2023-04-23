@@ -34,7 +34,8 @@ function Form({ journalData, setJournalData, journals, setJournals }) {
 export default Form;
 
 const BackToJournalsLink = styled(Link)`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 2px solid black;
   box-shadow: -2px 2px black;
   margin: 25px 10px 0 10px;

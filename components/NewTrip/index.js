@@ -99,9 +99,7 @@ function NewTrip({ onAddToDo, tripData, setTripData }) {
 export default NewTrip;
 
 const StyledHeading = styled.h1`
-  background-color: #d9ff80;
   padding: 10px;
-  box-shadow: -3px 3px black;
 `;
 
 const FormWrapper = styled.div`
@@ -113,7 +111,7 @@ const FormWrapper = styled.div`
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   border: 2px solid black;
   padding: 20px;
   box-shadow: -3px 3px black;

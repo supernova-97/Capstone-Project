@@ -35,7 +35,8 @@ function FormStepOne({ nextStep, onFormInput }) {
 export default FormStepOne;
 
 const StyledInput = styled.input`
-  background-color: #d9ff80;
+  background-color: #fff;
+  color: #000;
   height: 1.7rem;
   margin: 0.7rem;
   box-shadow: -2px 3px black;
@@ -47,7 +48,8 @@ const StyledInput = styled.input`
 `;
 
 const NextButton = styled.button`
-  background-color: #d9ff80;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 2px solid black;
   box-shadow: -2px 2px black;
   margin: 25px 0 0 10px;
