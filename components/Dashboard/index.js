@@ -53,8 +53,7 @@ function Dashboard({ tripData }) {
 export default Dashboard;
 
 const DashboardContainer = styled.div`
-  /* background-color: var(--background-color); */
-  background-color: blue;
+  background-color: var(--background-color);
   margin: 0 5%;
   border: 2px solid black;
   display: flex;
