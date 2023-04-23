@@ -51,8 +51,8 @@ function EntryForm({ addEntry }) {
       <StyledTextarea
         name="text"
         id="text"
-        rows={3}
-        cols={20}
+        rows={5}
+        cols={25}
         onChange={handleChange}
         required
       />
@@ -64,13 +64,13 @@ function EntryForm({ addEntry }) {
 export default EntryForm;
 
 const StyledForm = styled.form`
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   margin: 40px;
-  background-color: #fef6e4;
+  border: 2px solid black;
   color: #001858;
   box-shadow: -4px 4px black;
 `;
@@ -81,10 +81,13 @@ const StyledLabel = styled.label`
 
 const StyledTextarea = styled.textarea`
   margin: 5px;
+  background-color: white;
+  color: #000;
 `;
 
 const StyledButton = styled.button`
-  background-color: #f582ae;
+  background-color: var(--button-color);
+  color: var(--button-text-color);
   border: 1px solid black;
   padding: 5px;
   width: 30%;

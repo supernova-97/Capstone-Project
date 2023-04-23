@@ -33,10 +33,12 @@ function JournalDetail({ journals, setJournals }) {
   return (
     <>
       <Wrapper>
-        <Heading>{name}</Heading>
-        <Destination>in {destination}</Destination>
-        <Description>&quot;{description}&quot;</Description>
-        <h3>Your highlights:</h3>
+        <Header>
+          <Heading>{name}</Heading>
+          <Destination>in {destination}</Destination>
+          <Description>&quot;{description}&quot;</Description>
+        </Header>
+        <h2>Your highlights:</h2>
         {entries ? (
           entries.map((entry) => {
             return (
@@ -71,10 +73,18 @@ const Wrapper = styled.section`
   align-items: center;
 `;
 
+const Header = styled.section`
+  border: 2px solid black;
+  box-shadow: -3px 3px black;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const Heading = styled.h1`
   font-size: 2.2rem;
   margin-bottom: 0;
-  background-color: #d9ff80;
   padding: 10px;
   width: fit-content;
   text-align: center;
@@ -111,7 +121,8 @@ const EntryWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #db9d47;
+  background-color: var(--background-color);
+  border: 2px solid black;
   padding: 20px;
   border-radius: 10px;
   margin: 20px;

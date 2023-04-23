@@ -63,11 +63,15 @@ function List({ toDos, setToDos, onDeleteToDo, tripData }) {
                       </StyledDeleteButton>
 
                       {todoEditing === toDo.id ? (
-                        <button onClick={() => editTodo(toDo.id)}>Save</button>
+                        <EditAndSaveButton onClick={() => editTodo(toDo.id)}>
+                          Save
+                        </EditAndSaveButton>
                       ) : (
-                        <button onClick={() => setTodoEditing(toDo.id)}>
+                        <EditAndSaveButton
+                          onClick={() => setTodoEditing(toDo.id)}
+                        >
                           Edit
-                        </button>
+                        </EditAndSaveButton>
                       )}
                     </ListItem>
                   );
@@ -120,6 +124,7 @@ const StyledDeleteButton = styled.button`
   color: var(--button-text-color);
   height: fit-content;
   width: fit-content;
+  margin: 0 15px;
   border-radius: 20%;
   border: 1px solid black;
   box-shadow: -2px 2px black;
@@ -134,6 +139,12 @@ const StyledDeleteButton = styled.button`
     box-shadow: -2px 2px black;
     transition: none;
   }
+`;
+
+const EditAndSaveButton = styled.button`
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  border: 2px solid black;
 `;
 
 const StyledText = styled.p`

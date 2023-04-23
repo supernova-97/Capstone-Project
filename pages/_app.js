@@ -6,10 +6,10 @@ import { uid } from "uid";
 export default function App({ Component, pageProps }) {
   const [toDos, setToDos] = useState([]);
   const [tripData, setTripData] = useState({
-    name: "Camping Trip",
-    where: "Denmark",
-    when: "2023-05-05",
-    who: ["Me"],
+    name: "",
+    where: "",
+    when: "",
+    who: [],
   });
 
   const [journals, setJournals] = useState([]);
