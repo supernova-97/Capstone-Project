@@ -37,7 +37,10 @@ const EntryWrapper = styled.section`
 
 const Heading = styled.h1`
   font-size: 2.2rem;
-  margin: 10px 0 0 0;
+  margin-bottom: 0;
+  background-color: #d9ff80;
+  padding: 10px;
+  width: fit-content;
   text-align: center;
 `;
 
