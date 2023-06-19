@@ -12,6 +12,7 @@ function Dashboard({ tripData }) {
             <Countdown tripData={tripData} />
 
             <DetailedSection>
+              <Link href="/dashboard-edit">edit info</Link>
               <TripInfoHeading>Trip name:</TripInfoHeading>
               <TripInfo>{tripData.name}</TripInfo>
               <TripInfoHeading>Where to:</TripInfoHeading>
